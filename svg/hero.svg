@@ -1,0 +1,198 @@
+<svg class="hero-bg" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true"
+     xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Wowlyx base -->
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F8EFDB"/>
+      <stop offset="55%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#FEFBF4"/>
+    </linearGradient>
+
+    <!-- Brand yellow + a cool tech accent (teal) -->
+    <radialGradient id="glowBrand" cx="35%" cy="35%" r="75%">
+      <stop offset="0%" stop-color="#FFD539" stop-opacity="0.30"/>
+      <stop offset="60%" stop-color="#FFD539" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#FFD539" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="glowTech" cx="72%" cy="48%" r="65%">
+      <stop offset="0%" stop-color="#22C55E" stop-opacity="0.12"/>
+      <stop offset="55%" stop-color="#06B6D4" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#06B6D4" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="softBlur" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="2.8" result="b"/>
+      <feColorMatrix in="b" type="matrix"
+        values="1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 0.55 0" result="g"/>
+      <feMerge>
+        <feMergeNode in="g"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Subtle grid -->
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#101828" stroke-opacity="0.05" stroke-width="1"/>
+      <path d="M24 0V48M0 24H48" fill="none" stroke="#101828" stroke-opacity="0.028" stroke-width="1"/>
+    </pattern>
+
+    <!-- Circuit traces -->
+    <pattern id="circuit" width="180" height="180" patternUnits="userSpaceOnUse">
+      <path d="M18 24H84M84 24V66M84 66H144M36 138H96M96 138V108M96 108H156"
+            fill="none" stroke="#101828" stroke-opacity="0.045" stroke-width="1"/>
+      <circle cx="84" cy="24" r="2.2" fill="#101828" fill-opacity="0.06"/>
+      <circle cx="84" cy="66" r="2.2" fill="#101828" fill-opacity="0.06"/>
+      <circle cx="96" cy="108" r="2.2" fill="#101828" fill-opacity="0.06"/>
+      <circle cx="156" cy="108" r="2.2" fill="#101828" fill-opacity="0.06"/>
+      <circle cx="144" cy="66" r="2.2" fill="#101828" fill-opacity="0.06"/>
+    </pattern>
+
+    <!-- Scan beam -->
+    <linearGradient id="scanLine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFD539" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#FFD539" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#FFD539" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Radar sweep -->
+    <radialGradient id="radarGlow" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#FFD539" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#FFD539" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- HUD stroke gradients -->
+    <linearGradient id="hudStroke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#101828" stop-opacity="0.10"/>
+      <stop offset="50%" stop-color="#101828" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#101828" stop-opacity="0.10"/>
+    </linearGradient>
+
+    <linearGradient id="linkGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.10"/>
+      <stop offset="55%" stop-color="#FFD539" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.06"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Base -->
+  <rect width="1200" height="600" fill="url(#bgGrad)"/>
+
+  <!-- Ambient glows -->
+  <g filter="url(#softBlur)">
+    <circle cx="1050" cy="160" r="320" fill="url(#glowBrand)" opacity="0.95">
+      <animateTransform attributeName="transform" type="translate" dur="16s"
+                        values="0 0; -34 14; 0 0" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="820" cy="360" r="320" fill="url(#glowTech)" opacity="0.9">
+      <animateTransform attributeName="transform" type="translate" dur="18s"
+                        values="0 0; 18 -10; 0 0" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Structure overlays -->
+  <rect width="1200" height="600" fill="url(#grid)"/>
+  <rect width="1200" height="600" fill="url(#circuit)" opacity="0.75"/>
+
+  <!-- HUD corner brackets -->
+  <g fill="none" stroke="url(#hudStroke)" stroke-width="2" stroke-linecap="round" opacity="0.55">
+    <!-- top-left -->
+    <path d="M48 78V48H108"/>
+    <path d="M48 132V168H84"/>
+    <!-- top-right -->
+    <path d="M1152 78V48H1092"/>
+    <path d="M1152 132V168H1116"/>
+    <!-- bottom-left -->
+    <path d="M48 522V552H108"/>
+    <path d="M48 468V432H84"/>
+    <!-- bottom-right -->
+    <path d="M1152 522V552H1092"/>
+    <path d="M1152 468V432H1116"/>
+  </g>
+
+  <!-- Center reticle (subtle intelligence target) -->
+  <g transform="translate(600 300)" fill="none" stroke="#101828" stroke-opacity="0.09">
+    <circle r="92"/>
+    <circle r="48"/>
+    <path d="M-130 0H-92M92 0H130M0 -130V-92M0 92V130" stroke-width="2"/>
+    <circle r="3" fill="#FFD539" fill-opacity="0.35" stroke="none"/>
+  </g>
+
+  <!-- Network links + nodes (modern “intelligence graph”) -->
+  <g opacity="0.85">
+    <!-- links -->
+    <g fill="none" stroke="url(#linkGrad)" stroke-width="1.5" stroke-linecap="round">
+      <path d="M180 170 C260 120, 340 120, 430 170"/>
+      <path d="M430 170 C520 220, 520 300, 600 300"/>
+      <path d="M600 300 C690 292, 770 250, 850 210"/>
+      <path d="M260 420 C360 360, 460 350, 560 380"/>
+      <path d="M560 380 C680 420, 760 450, 900 430"/>
+      <path d="M900 430 C980 420, 1040 380, 1100 330"/>
+    </g>
+
+    <!-- nodes -->
+    <g filter="url(#glow)">
+      <g>
+        <circle cx="180" cy="170" r="4" fill="#FFD539" fill-opacity="0.55"/>
+        <circle cx="430" cy="170" r="4" fill="#06B6D4" fill-opacity="0.40"/>
+        <circle cx="600" cy="300" r="5" fill="#FFD539" fill-opacity="0.55"/>
+        <circle cx="850" cy="210" r="4" fill="#06B6D4" fill-opacity="0.35"/>
+        <circle cx="260" cy="420" r="4" fill="#06B6D4" fill-opacity="0.30"/>
+        <circle cx="560" cy="380" r="4" fill="#FFD539" fill-opacity="0.45"/>
+        <circle cx="900" cy="430" r="4" fill="#06B6D4" fill-opacity="0.28"/>
+        <circle cx="1100" cy="330" r="4" fill="#FFD539" fill-opacity="0.40"/>
+      </g>
+
+      <!-- pulsing “activity” -->
+      <g>
+        <circle cx="600" cy="300" r="10" fill="none" stroke="#FFD539" stroke-opacity="0.22" stroke-width="2">
+          <animate attributeName="r" dur="2.8s" values="10;26" repeatCount="indefinite"/>
+          <animate attributeName="stroke-opacity" dur="2.8s" values="0.22;0" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="180" cy="170" r="8" fill="none" stroke="#06B6D4" stroke-opacity="0.16" stroke-width="2">
+          <animate attributeName="r" dur="3.4s" values="8;22" repeatCount="indefinite"/>
+          <animate attributeName="stroke-opacity" dur="3.4s" values="0.16;0" repeatCount="indefinite"/>
+        </circle>
+      </g>
+    </g>
+  </g>
+
+  <!-- Radar hub (surveillance feel) -->
+  <g transform="translate(930 170)">
+    <g fill="none" stroke="#101828" stroke-opacity="0.10">
+      <circle r="46"/>
+      <circle r="82" opacity="0.8"/>
+      <circle r="120" opacity="0.55"/>
+    </g>
+
+    <path d="M0 0 L140 -14 A140 140 0 0 1 14 -140 Z" fill="url(#radarGlow)" opacity="0.9">
+      <animateTransform attributeName="transform" type="rotate" dur="4.8s" from="0" to="360" repeatCount="indefinite"/>
+    </path>
+
+    <line x1="0" y1="0" x2="0" y2="-140" stroke="#FFD539" stroke-opacity="0.32" stroke-width="1.5">
+      <animateTransform attributeName="transform" type="rotate" dur="4.8s" from="0" to="360" repeatCount="indefinite"/>
+    </line>
+
+    <circle r="4" fill="#FFD539" fill-opacity="0.62"/>
+  </g>
+
+  <!-- Scan beam -->
+  <rect x="-260" y="0" width="260" height="600" fill="url(#scanLine)" opacity="0.95">
+    <animate attributeName="x" dur="7.5s" values="-260;1200" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Tiny “telemetry ticks” (adds motion without clutter) -->
+  <g opacity="0.35" stroke="#101828" stroke-opacity="0.12" stroke-width="2" stroke-linecap="round">
+    <path d="M160 92h28M210 92h14"/>
+    <path d="M980 520h28M1030 520h14"/>
+    <path d="M90 310h20M122 310h10"/>
+    <path d="M1090 250h20M1122 250h10"/>
+  </g>
+</svg>

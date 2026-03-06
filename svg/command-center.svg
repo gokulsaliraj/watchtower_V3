@@ -1,0 +1,579 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <defs>
+    <!-- Timeline: 8s loop
+         TVs visible ~0–2s (0–0.25)
+         Transition ~2–4s (0.25–0.50)
+         Phone view ~4–8s (0.50–1.00)
+    -->
+
+    <!-- BG transition dark -> light -->
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#070b15">
+        <animate attributeName="stop-color" dur="8s" repeatCount="indefinite"
+                 values="#070b15;#070b15;#fff6d9;#fff6d9;#070b15"
+                 keyTimes="0;0.25;0.50;0.98;1"/>
+      </stop>
+      <stop offset="1" stop-color="#050811">
+        <animate attributeName="stop-color" dur="8s" repeatCount="indefinite"
+                 values="#050811;#050811;#fff1c8;#fff1c8;#050811"
+                 keyTimes="0;0.25;0.50;0.98;1"/>
+      </stop>
+    </linearGradient>
+
+    <!-- Subtle dark grid -->
+    <pattern id="gridDark" width="26" height="26" patternUnits="userSpaceOnUse">
+      <path d="M26 0H0V26" fill="none" stroke="#1b2336" stroke-width="1" opacity="0.45"/>
+      <path d="M13 0V26M0 13H26" fill="none" stroke="#111827" stroke-width="1" opacity="0.35"/>
+    </pattern>
+
+    <!-- Light grid -->
+    <pattern id="gridLight" width="26" height="26" patternUnits="userSpaceOnUse">
+      <path d="M26 0H0V26" fill="none" stroke="#e8dfc3" stroke-width="1" opacity="0.35"/>
+      <path d="M13 0V26M0 13H26" fill="none" stroke="#efe6c9" stroke-width="1" opacity="0.30"/>
+    </pattern>
+
+    <!-- Screen vignette -->
+    <radialGradient id="screenVignette" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="75%" stop-color="#000" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.34"/>
+    </radialGradient>
+
+    <!-- Glows -->
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#8fe9ff" flood-opacity="0.14"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#7adfff" flood-opacity="0.09"/>
+    </filter>
+    <filter id="wallShadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000" flood-opacity="0.45"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+    <filter id="phoneShadow" x="-35%" y="-35%" width="170%" height="170%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000" flood-opacity="0.35"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000" flood-opacity="0.22"/>
+    </filter>
+
+    <!-- Scanlines -->
+    <pattern id="scanlines" width="6" height="6" patternUnits="userSpaceOnUse">
+      <rect width="6" height="2" fill="#000" opacity="0.16"/>
+      <rect y="2" width="6" height="4" fill="#000" opacity="0"/>
+    </pattern>
+
+    <!-- CCTV noise -->
+    <filter id="cctvNoise" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.95" numOctaves="2" seed="7" result="n">
+        <animate attributeName="baseFrequency" dur="8s" repeatCount="indefinite"
+                 values="0.75;0.92;0.82;0.9;0.75" keyTimes="0;0.25;0.5;0.75;1"/>
+      </feTurbulence>
+      <feColorMatrix in="n" type="matrix" values="
+        1 0 0 0 0
+        0 1 0 0 0
+        0 0 1 0 0
+        0 0 0 0.20 0" result="na"/>
+      <feBlend in="SourceGraphic" in2="na" mode="screen"/>
+    </filter>
+
+    <!-- Feed tints -->
+    <linearGradient id="tintColor" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7adfff" stop-opacity="0.22"/>
+      <stop offset="0.5" stop-color="#8a5cff" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#00ffa8" stop-opacity="0.14"/>
+    </linearGradient>
+    <linearGradient id="tintBW" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#c9d2e5" stop-opacity="0.10"/>
+    </linearGradient>
+
+    <!-- Dissolve mask (fast between 2s-4s) -->
+    <filter id="dissolveMaskFilter" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="11" result="t">
+        <animate attributeName="seed" dur="8s" repeatCount="indefinite"
+                 values="11;11;12;14;16;11"
+                 keyTimes="0;0.25;0.34;0.45;0.50;1"/>
+        <animate attributeName="baseFrequency" dur="8s" repeatCount="indefinite"
+                 values="0.85;0.85;1.00;1.20;1.35;0.85"
+                 keyTimes="0;0.25;0.34;0.45;0.50;1"/>
+      </feTurbulence>
+      <feColorMatrix in="t" type="matrix" result="a">
+        <animate attributeName="values" dur="8s" repeatCount="indefinite"
+          values="
+            0 0 0 0 1   0 0 0 0 1   0 0 0 0 1   1.6 0 0 0 0.70;
+            0 0 0 0 1   0 0 0 0 1   0 0 0 0 1   1.6 0 0 0 0.70;
+            0 0 0 0 1   0 0 0 0 1   0 0 0 0 1   1.6 0 0 0 0.10;
+            0 0 0 0 1   0 0 0 0 1   0 0 0 0 1   1.6 0 0 0 -0.60;
+            0 0 0 0 1   0 0 0 0 1   0 0 0 0 1   1.6 0 0 0 -1.35;
+            0 0 0 0 1   0 0 0 0 1   0 0 0 0 1   1.6 0 0 0 0.70"
+          keyTimes="0;0.25;0.34;0.45;0.50;1"/>
+      </feColorMatrix>
+      <feGaussianBlur in="a" stdDeviation="0.6"/>
+    </filter>
+
+    <mask id="wallDissolveMask">
+      <rect width="960" height="540" fill="white" filter="url(#dissolveMaskFilter)"/>
+    </mask>
+
+    <!-- Phone -->
+    <linearGradient id="phoneBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#171d2c"/>
+      <stop offset="1" stop-color="#0b1020"/>
+    </linearGradient>
+
+    <linearGradient id="appBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#fff4cf"/>
+    </linearGradient>
+
+    <!-- Bigger phone screen clip -->
+    <clipPath id="phoneScreenClip">
+      <rect x="316" y="86" width="328" height="416" rx="34" ry="34"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="540" fill="url(#bgGrad)"/>
+  <rect width="960" height="540" fill="url(#gridDark)" opacity="0.85">
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite"
+             values="0.85;0.85;0.20;0.10;0.10;0.85"
+             keyTimes="0;0.25;0.50;0.75;0.98;1"/>
+  </rect>
+  <rect width="960" height="540" fill="url(#gridLight)" opacity="0">
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite"
+             values="0;0;0.40;0.55;0.55;0"
+             keyTimes="0;0.25;0.50;0.75;0.98;1"/>
+  </rect>
+
+  <!-- ===== BIG 6-SCREEN WALL ===== -->
+  <!-- Phone screen center is (480, 294). Wall center is (480,270) => translate Y to +24 during transition. -->
+  <g id="wallTranslate" mask="url(#wallDissolveMask)" filter="url(#wallShadow)">
+    <!-- Move wall towards exact phone screen center between 2s-4s -->
+    <animateTransform attributeName="transform" type="translate" dur="8s" repeatCount="indefinite"
+      values="0 0;0 0;0 24;0 24;0 0"
+      keyTimes="0;0.25;0.50;0.98;1"/>
+
+    <g transform="translate(480 270)">
+      <g id="wallScale">
+        <!-- Scale down between 2s-4s -->
+        <animateTransform attributeName="transform" type="scale" dur="8s" repeatCount="indefinite"
+          values="1;1;0.18;0.00;1"
+          keyTimes="0;0.25;0.50;0.75;1"/>
+
+        <g transform="translate(-480 -270)">
+          <!-- Fade out completed by 4s -->
+          <animate attributeName="opacity" dur="8s" repeatCount="indefinite"
+                   values="1;1;0;0;1"
+                   keyTimes="0;0.25;0.50;0.98;1"/>
+
+          <!-- Screen positions -->
+          <!-- (10,50) (330,50) (650,50) / (10,280) (330,280) (650,280) -->
+
+          <!-- TV 1 COLOR -->
+          <g transform="translate(10,50)">
+            <rect width="300" height="210" rx="22" fill="#0b0f1a" stroke="#2a3856" stroke-width="1.6"/>
+            <path d="M22 10H278" stroke="#2f3f62" stroke-opacity="0.55" stroke-width="2" stroke-linecap="round"/>
+            <rect x="15" y="15" width="270" height="150" rx="16" fill="#0a0f1c" filter="url(#softGlow)"/>
+            <g clip-path="url(#c1)">
+              <defs><clipPath id="c1"><rect x="15" y="15" width="270" height="150" rx="16"/></clipPath></defs>
+              <g>
+                <animateTransform attributeName="transform" type="translate" dur="0.36s" repeatCount="indefinite"
+                                  values="0 0;0.8 0;0 0;-0.6 0;0 0"/>
+                <rect x="15" y="15" width="270" height="150" fill="url(#tintColor)"/>
+                <rect x="15" y="15" width="270" height="150" fill="#071022" opacity="0.62"/>
+                <path d="M20 162 L132 72" stroke="#cfeaff" stroke-opacity="0.10" stroke-width="2"/>
+                <path d="M44 162 L154 76" stroke="#cfeaff" stroke-opacity="0.08" stroke-width="2"/>
+                <rect x="26" y="28" width="120" height="124" fill="#0b1630" opacity="0.40"/>
+                <rect x="152" y="28" width="126" height="124" fill="#0a1226" opacity="0.35"/>
+                <rect x="208" y="52" width="28" height="100" fill="#060a14" opacity="0.55"/>
+                <circle cx="106" cy="130" r="10" fill="#e7f5ff" opacity="0.12">
+                  <animate attributeName="cx" dur="3.2s" repeatCount="indefinite" values="98;118;108;126;98"/>
+                </circle>
+              </g>
+              <g opacity="0.18">
+                <animateTransform attributeName="transform" type="translate" dur="2.6s" repeatCount="indefinite"
+                                  values="0 -80;0 240"/>
+                <rect x="15" y="-30" width="270" height="34" fill="#fff" opacity="0.45"/>
+              </g>
+              <rect x="15" y="15" width="270" height="150" fill="url(#scanlines)" opacity="0.60">
+                <animateTransform attributeName="transform" type="translate" dur="1.4s" repeatCount="indefinite"
+                                  values="0 -6;0 6"/>
+              </rect>
+              <g filter="url(#cctvNoise)">
+                <rect x="15" y="15" width="270" height="150" fill="#0a0f1c" opacity="0.24"/>
+              </g>
+              <rect x="15" y="15" width="270" height="150" fill="url(#screenVignette)"/>
+              <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#FEFBF4" opacity="0.92">
+                <text x="24" y="34">CAM 01</text>
+                <text x="132" y="34">2026-03-03 14:28:11</text>
+                <circle cx="92" cy="30" r="4" fill="#FFD539">
+                  <animate attributeName="opacity" dur="1s" repeatCount="indefinite" values="0.25;1;0.25"/>
+                </circle>
+                <text x="102" y="34" fill="#FFD539">REC</text>
+              </g>
+            </g>
+          </g>
+
+          <!-- TV 2 BW -->
+          <g transform="translate(330,50)">
+            <rect width="300" height="210" rx="22" fill="#0b0f1a" stroke="#2a3856" stroke-width="1.6"/>
+            <path d="M22 10H278" stroke="#2f3f62" stroke-opacity="0.55" stroke-width="2" stroke-linecap="round"/>
+            <rect x="15" y="15" width="270" height="150" rx="16" fill="#0a0f1c" filter="url(#softGlow)"/>
+            <g clip-path="url(#c2)">
+              <defs><clipPath id="c2"><rect x="15" y="15" width="270" height="150" rx="16"/></clipPath></defs>
+              <g>
+                <animateTransform attributeName="transform" type="translate" dur="0.42s" repeatCount="indefinite"
+                                  values="0 0;0.7 0;0 0;-0.6 0;0 0"/>
+                <rect x="15" y="15" width="270" height="150" fill="url(#tintBW)"/>
+                <rect x="15" y="15" width="270" height="150" fill="#0b1224" opacity="0.70"/>
+                <path d="M22 162 L130 54" stroke="#fff" stroke-opacity="0.14" stroke-width="3"/>
+                <path d="M56 162 L150 62" stroke="#fff" stroke-opacity="0.10" stroke-width="3"/>
+                <path d="M90 162 L170 72" stroke="#fff" stroke-opacity="0.08" stroke-width="3"/>
+                <rect x="190" y="44" width="84" height="110" fill="#0a1020" opacity="0.45"/>
+                <rect x="64" y="126" width="26" height="14" rx="5" fill="#fff" opacity="0.10">
+                  <animate attributeName="x" dur="3.0s" repeatCount="indefinite" values="56;92;74;110;56"/>
+                </rect>
+              </g>
+              <g opacity="0.16">
+                <animateTransform attributeName="transform" type="translate" dur="2.9s" repeatCount="indefinite"
+                                  values="0 -90;0 260"/>
+                <rect x="15" y="-30" width="270" height="30" fill="#fff" opacity="0.45"/>
+              </g>
+              <rect x="15" y="15" width="270" height="150" fill="url(#scanlines)" opacity="0.62">
+                <animateTransform attributeName="transform" type="translate" dur="1.7s" repeatCount="indefinite"
+                                  values="0 -6;0 6"/>
+              </rect>
+              <g filter="url(#cctvNoise)">
+                <rect x="15" y="15" width="270" height="150" fill="#0a0f1c" opacity="0.26"/>
+              </g>
+              <rect x="15" y="15" width="270" height="150" fill="url(#screenVignette)"/>
+              <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#FEFBF4" opacity="0.92">
+                <text x="24" y="34">CAM 02</text>
+                <text x="132" y="34">2026-03-03 14:28:11</text>
+                <circle cx="92" cy="30" r="4" fill="#FFD539">
+                  <animate attributeName="opacity" dur="1.05s" repeatCount="indefinite" values="0.2;1;0.2"/>
+                </circle>
+                <text x="102" y="34" fill="#FFD539">REC</text>
+              </g>
+            </g>
+          </g>
+
+          <!-- TV 3 COLOR -->
+          <g transform="translate(650,50)">
+            <rect width="300" height="210" rx="22" fill="#0b0f1a" stroke="#2a3856" stroke-width="1.6"/>
+            <path d="M22 10H278" stroke="#2f3f62" stroke-opacity="0.55" stroke-width="2" stroke-linecap="round"/>
+            <rect x="15" y="15" width="270" height="150" rx="16" fill="#0a0f1c" filter="url(#softGlow)"/>
+            <g clip-path="url(#c3)">
+              <defs><clipPath id="c3"><rect x="15" y="15" width="270" height="150" rx="16"/></clipPath></defs>
+              <g>
+                <animateTransform attributeName="transform" type="translate" dur="0.40s" repeatCount="indefinite"
+                                  values="0 0;0.6 0;0 0;-0.8 0;0 0"/>
+                <rect x="15" y="15" width="270" height="150" fill="url(#tintColor)"/>
+                <rect x="15" y="15" width="270" height="150" fill="#071022" opacity="0.62"/>
+                <rect x="26" y="32" width="78" height="122" fill="#0a1530" opacity="0.50"/>
+                <rect x="110" y="32" width="82" height="122" fill="#0a1530" opacity="0.38"/>
+                <rect x="198" y="32" width="84" height="122" fill="#0a1530" opacity="0.30"/>
+                <rect x="78" y="132" width="22" height="14" rx="4" fill="#e7f5ff" opacity="0.10">
+                  <animate attributeName="x" dur="3.6s" repeatCount="indefinite" values="72;104;88;120;72"/>
+                </rect>
+              </g>
+              <g opacity="0.18">
+                <animateTransform attributeName="transform" type="translate" dur="2.7s" repeatCount="indefinite"
+                                  values="-40 0;40 0;-40 0"/>
+                <rect x="-20" y="15" width="330" height="150" fill="#fff" opacity="0.14"/>
+              </g>
+              <rect x="15" y="15" width="270" height="150" fill="url(#scanlines)" opacity="0.60">
+                <animateTransform attributeName="transform" type="translate" dur="1.55s" repeatCount="indefinite"
+                                  values="0 -6;0 6"/>
+              </rect>
+              <g filter="url(#cctvNoise)">
+                <rect x="15" y="15" width="270" height="150" fill="#0a0f1c" opacity="0.24"/>
+              </g>
+              <rect x="15" y="15" width="270" height="150" fill="url(#screenVignette)"/>
+              <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#FEFBF4" opacity="0.92">
+                <text x="24" y="34">CAM 03</text>
+                <text x="132" y="34">2026-03-03 14:28:11</text>
+                <circle cx="92" cy="30" r="4" fill="#FFD539">
+                  <animate attributeName="opacity" dur="1.0s" repeatCount="indefinite" values="0.25;1;0.25"/>
+                </circle>
+                <text x="102" y="34" fill="#FFD539">REC</text>
+              </g>
+            </g>
+          </g>
+
+          <!-- TV 4 BW -->
+          <g transform="translate(10,280)">
+            <rect width="300" height="210" rx="22" fill="#0b0f1a" stroke="#2a3856" stroke-width="1.6"/>
+            <path d="M22 10H278" stroke="#2f3f62" stroke-opacity="0.55" stroke-width="2" stroke-linecap="round"/>
+            <rect x="15" y="15" width="270" height="150" rx="16" fill="#0a0f1c" filter="url(#softGlow)"/>
+            <g clip-path="url(#c4)">
+              <defs><clipPath id="c4"><rect x="15" y="15" width="270" height="150" rx="16"/></clipPath></defs>
+              <g>
+                <animateTransform attributeName="transform" type="translate" dur="0.44s" repeatCount="indefinite"
+                                  values="0 0;0.7 0;0 0;-0.6 0;0 0"/>
+                <rect x="15" y="15" width="270" height="150" fill="url(#tintBW)"/>
+                <rect x="15" y="15" width="270" height="150" fill="#0b1224" opacity="0.72"/>
+                <rect x="26" y="30" width="110" height="126" fill="#0a1020" opacity="0.55"/>
+                <rect x="142" y="30" width="142" height="126" fill="#0a1020" opacity="0.38"/>
+                <rect x="194" y="54" width="28" height="102" fill="#060a14" opacity="0.55"/>
+                <circle cx="92" cy="126" r="9" fill="#fff" opacity="0.12">
+                  <animate attributeName="cx" dur="3.4s" repeatCount="indefinite" values="86;106;96;118;86"/>
+                </circle>
+              </g>
+              <g opacity="0.16">
+                <animateTransform attributeName="transform" type="translate" dur="3.1s" repeatCount="indefinite"
+                                  values="0 -100;0 300"/>
+                <rect x="15" y="-30" width="270" height="28" fill="#fff" opacity="0.45"/>
+              </g>
+              <rect x="15" y="15" width="270" height="150" fill="url(#scanlines)" opacity="0.62">
+                <animateTransform attributeName="transform" type="translate" dur="1.85s" repeatCount="indefinite"
+                                  values="0 -6;0 6"/>
+              </rect>
+              <g filter="url(#cctvNoise)">
+                <rect x="15" y="15" width="270" height="150" fill="#0a0f1c" opacity="0.26"/>
+              </g>
+              <rect x="15" y="15" width="270" height="150" fill="url(#screenVignette)"/>
+              <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#FEFBF4" opacity="0.92">
+                <text x="24" y="34">CAM 04</text>
+                <text x="132" y="34">2026-03-03 14:28:11</text>
+                <circle cx="92" cy="30" r="4" fill="#FFD539">
+                  <animate attributeName="opacity" dur="1.08s" repeatCount="indefinite" values="0.2;1;0.2"/>
+                </circle>
+                <text x="102" y="34" fill="#FFD539">REC</text>
+              </g>
+            </g>
+          </g>
+
+          <!-- TV 5 COLOR -->
+          <g transform="translate(330,280)">
+            <rect width="300" height="210" rx="22" fill="#0b0f1a" stroke="#2a3856" stroke-width="1.6"/>
+            <path d="M22 10H278" stroke="#2f3f62" stroke-opacity="0.55" stroke-width="2" stroke-linecap="round"/>
+            <rect x="15" y="15" width="270" height="150" rx="16" fill="#0a0f1c" filter="url(#softGlow)"/>
+            <g clip-path="url(#c5)">
+              <defs><clipPath id="c5"><rect x="15" y="15" width="270" height="150" rx="16"/></clipPath></defs>
+              <g>
+                <animateTransform attributeName="transform" type="translate" dur="0.38s" repeatCount="indefinite"
+                                  values="0 0;0.6 0;0 0;-0.8 0;0 0"/>
+                <rect x="15" y="15" width="270" height="150" fill="url(#tintColor)"/>
+                <rect x="15" y="15" width="270" height="150" fill="#071022" opacity="0.62"/>
+                <rect x="26" y="30" width="258" height="126" fill="#081022" opacity="0.52"/>
+                <rect x="40" y="52" width="92" height="92" fill="#0c1a32" opacity="0.42"/>
+                <rect x="140" y="52" width="130" height="92" fill="#0b1630" opacity="0.36"/>
+                <path d="M24 158 H286" stroke="#cfeaff" stroke-opacity="0.10" stroke-width="2"/>
+                <circle cx="170" cy="120" r="10" fill="#e7f5ff" opacity="0.12">
+                  <animate attributeName="cx" dur="3.0s" repeatCount="indefinite" values="162;192;176;206;162"/>
+                </circle>
+              </g>
+              <g opacity="0.18">
+                <animateTransform attributeName="transform" type="translate" dur="2.4s" repeatCount="indefinite"
+                                  values="0 -80;0 240"/>
+                <rect x="15" y="-30" width="270" height="34" fill="#fff" opacity="0.45"/>
+              </g>
+              <rect x="15" y="15" width="270" height="150" fill="url(#scanlines)" opacity="0.60">
+                <animateTransform attributeName="transform" type="translate" dur="1.52s" repeatCount="indefinite"
+                                  values="0 -6;0 6"/>
+              </rect>
+              <g filter="url(#cctvNoise)">
+                <rect x="15" y="15" width="270" height="150" fill="#0a0f1c" opacity="0.24"/>
+              </g>
+              <rect x="15" y="15" width="270" height="150" fill="url(#screenVignette)"/>
+              <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#FEFBF4" opacity="0.92">
+                <text x="24" y="34">CAM 05</text>
+                <text x="132" y="34">2026-03-03 14:28:11</text>
+                <circle cx="92" cy="30" r="4" fill="#FFD539">
+                  <animate attributeName="opacity" dur="1.0s" repeatCount="indefinite" values="0.25;1;0.25"/>
+                </circle>
+                <text x="102" y="34" fill="#FFD539">REC</text>
+              </g>
+            </g>
+          </g>
+
+          <!-- TV 6 COLOR -->
+          <g transform="translate(650,280)">
+            <rect width="300" height="210" rx="22" fill="#0b0f1a" stroke="#2a3856" stroke-width="1.6"/>
+            <path d="M22 10H278" stroke="#2f3f62" stroke-opacity="0.55" stroke-width="2" stroke-linecap="round"/>
+            <rect x="15" y="15" width="270" height="150" rx="16" fill="#0a0f1c" filter="url(#softGlow)"/>
+            <g clip-path="url(#c6)">
+              <defs><clipPath id="c6"><rect x="15" y="15" width="270" height="150" rx="16"/></clipPath></defs>
+              <g>
+                <animateTransform attributeName="transform" type="translate" dur="0.41s" repeatCount="indefinite"
+                                  values="0 0;0.7 0;0 0;-0.8 0;0 0"/>
+                <rect x="15" y="15" width="270" height="150" fill="url(#tintColor)"/>
+                <rect x="15" y="15" width="270" height="150" fill="#071022" opacity="0.62"/>
+                <rect x="26" y="34" width="258" height="118" fill="#081022" opacity="0.52"/>
+                <rect x="42" y="54" width="98" height="88" fill="#0a1530" opacity="0.46"/>
+                <rect x="148" y="54" width="120" height="88" fill="#0a1530" opacity="0.32"/>
+                <rect x="76" y="132" width="30" height="14" rx="4" fill="#e7f5ff" opacity="0.10">
+                  <animate attributeName="x" dur="3.8s" repeatCount="indefinite" values="70;110;94;132;70"/>
+                </rect>
+              </g>
+              <g opacity="0.18">
+                <animateTransform attributeName="transform" type="translate" dur="2.8s" repeatCount="indefinite"
+                                  values="-40 0;40 0;-40 0"/>
+                <rect x="-20" y="15" width="330" height="150" fill="#fff" opacity="0.14"/>
+              </g>
+              <rect x="15" y="15" width="270" height="150" fill="url(#scanlines)" opacity="0.60">
+                <animateTransform attributeName="transform" type="translate" dur="1.6s" repeatCount="indefinite"
+                                  values="0 -6;0 6"/>
+              </rect>
+              <g filter="url(#cctvNoise)">
+                <rect x="15" y="15" width="270" height="150" fill="#0a0f1c" opacity="0.24"/>
+              </g>
+              <rect x="15" y="15" width="270" height="150" fill="url(#screenVignette)"/>
+              <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#FEFBF4" opacity="0.92">
+                <text x="24" y="34">CAM 06</text>
+                <text x="132" y="34">2026-03-03 14:28:11</text>
+                <circle cx="92" cy="30" r="4" fill="#FFD539">
+                  <animate attributeName="opacity" dur="1.12s" repeatCount="indefinite" values="0.25;1;0.25"/>
+                </circle>
+                <text x="102" y="34" fill="#FFD539">REC</text>
+              </g>
+            </g>
+          </g>
+
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ===== PHONE (visible 4s–8s) ===== -->
+  <g id="phone" opacity="0" filter="url(#phoneShadow)">
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite"
+             values="0;0;1;1;1;0"
+             keyTimes="0;0.50;0.52;0.98;1;1"/>
+    <animateTransform attributeName="transform" type="translate" dur="8s" repeatCount="indefinite"
+                      values="0 0;0 0;0 -7;0 0"
+                      keyTimes="0;0.50;0.95;1"/>
+
+    <rect x="294" y="58" width="372" height="464" rx="54" fill="url(#phoneBody)" stroke="#2a3856" stroke-width="2"/>
+    <rect x="312" y="76" width="336" height="428" rx="40" fill="#050811" stroke="#1b2336"/>
+    <rect x="448" y="68" width="64" height="12" rx="6" fill="#0b0f1a" opacity="0.9"/>
+
+    <g clip-path="url(#phoneScreenClip)">
+      <rect x="316" y="86" width="328" height="416" rx="34" fill="url(#appBg)"/>
+
+      <!-- header -->
+      <rect x="316" y="86" width="328" height="70" rx="34" fill="#ffffff" opacity="0.92"/>
+      <text x="338" y="125" font-family="Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif"
+            font-size="22" fill="#0a1022" opacity="0.95">WatchTower</text>
+      <text x="338" y="145" font-family="Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif"
+            font-size="12" fill="#22304b" opacity="0.9">Live feeds • footfall • parking</text>
+
+      <!-- LIVE pill -->
+      <rect x="556" y="110" width="72" height="26" rx="13" fill="#0a1022" opacity="0.92"/>
+      <circle cx="570" cy="123" r="5" fill="#FFD539">
+        <animate attributeName="opacity" dur="1s" repeatCount="indefinite" values="0.25;1;0.25"/>
+      </circle>
+      <text x="582" y="127" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+            font-size="12" fill="#fff6d9" opacity="0.95">LIVE</text>
+
+      <!-- Feeds -->
+      <g transform="translate(332,170)">
+        <rect x="0" y="0" width="296" height="158" rx="18" fill="#ffffff" opacity="0.55"/>
+        <text x="10" y="18" font-family="Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif"
+              font-size="12" fill="#0a1022" opacity="0.9">Feeds</text>
+
+        <g transform="translate(10,30)">
+          <rect width="138" height="54" rx="12" fill="#0a0f1c" filter="url(#softGlow)"/>
+          <rect width="138" height="54" rx="12" fill="url(#tintColor)" opacity="0.30"/>
+          <rect width="138" height="54" fill="url(#scanlines)" opacity="0.58">
+            <animateTransform attributeName="transform" type="translate" dur="1.55s" repeatCount="indefinite" values="0 -6;0 6"/>
+          </rect>
+          <g filter="url(#cctvNoise)"><rect width="138" height="54" fill="#0a0f1c" opacity="0.22"/></g>
+          <rect width="138" height="54" fill="url(#screenVignette)"/>
+          <text x="8" y="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+                font-size="10" fill="#FEFBF4" opacity="0.9">CAM 01</text>
+        </g>
+
+        <g transform="translate(148,30)">
+          <rect width="138" height="54" rx="12" fill="#0a0f1c" filter="url(#softGlow)"/>
+          <rect width="138" height="54" rx="12" fill="url(#tintBW)" opacity="0.30"/>
+          <rect width="138" height="54" fill="url(#scanlines)" opacity="0.60">
+            <animateTransform attributeName="transform" type="translate" dur="1.75s" repeatCount="indefinite" values="0 -6;0 6"/>
+          </rect>
+          <g filter="url(#cctvNoise)"><rect width="138" height="54" fill="#0a0f1c" opacity="0.24"/></g>
+          <rect width="138" height="54" fill="url(#screenVignette)"/>
+          <text x="8" y="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+                font-size="10" fill="#FEFBF4" opacity="0.9">CAM 02</text>
+        </g>
+
+        <g transform="translate(10,90)">
+          <rect width="138" height="54" rx="12" fill="#0a0f1c" filter="url(#softGlow)"/>
+          <rect width="138" height="54" rx="12" fill="url(#tintColor)" opacity="0.26"/>
+          <g opacity="0.16">
+            <animateTransform attributeName="transform" type="translate" dur="2.4s" repeatCount="indefinite" values="0 -40;0 90"/>
+            <rect y="-20" width="138" height="18" fill="#fff" opacity="0.5"/>
+          </g>
+          <rect width="138" height="54" fill="url(#scanlines)" opacity="0.58">
+            <animateTransform attributeName="transform" type="translate" dur="1.6s" repeatCount="indefinite" values="0 -6;0 6"/>
+          </rect>
+          <g filter="url(#cctvNoise)"><rect width="138" height="54" fill="#0a0f1c" opacity="0.22"/></g>
+          <rect width="138" height="54" fill="url(#screenVignette)"/>
+          <text x="8" y="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+                font-size="10" fill="#FEFBF4" opacity="0.9">CAM 05</text>
+        </g>
+
+        <g transform="translate(148,90)">
+          <rect width="138" height="54" rx="12" fill="#0a0f1c" filter="url(#softGlow)"/>
+          <rect width="138" height="54" rx="12" fill="url(#tintColor)" opacity="0.26"/>
+          <rect width="138" height="54" fill="url(#scanlines)" opacity="0.58">
+            <animateTransform attributeName="transform" type="translate" dur="1.45s" repeatCount="indefinite" values="0 -6;0 6"/>
+          </rect>
+          <g filter="url(#cctvNoise)"><rect width="138" height="54" fill="#0a0f1c" opacity="0.22"/></g>
+          <rect width="138" height="54" fill="url(#screenVignette)"/>
+          <text x="8" y="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+                font-size="10" fill="#FEFBF4" opacity="0.9">CAM 06</text>
+        </g>
+      </g>
+
+      <!-- Footfall + Stats -->
+      <g transform="translate(332,340)">
+        <rect x="0" y="0" width="192" height="96" rx="18" fill="#0a1022" opacity="0.92"/>
+        <text x="14" y="22" font-family="Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif"
+              font-size="12" fill="#fff6d9" opacity="0.95">Footfall</text>
+
+        <g transform="translate(14,34)">
+          <rect x="0" y="44" width="12" height="24" rx="3" fill="#7adfff" opacity="0.55">
+            <animate attributeName="height" dur="2.3s" repeatCount="indefinite" values="18;30;24;34;18"/>
+            <animate attributeName="y" dur="2.3s" repeatCount="indefinite" values="50;38;44;34;50"/>
+          </rect>
+          <rect x="18" y="36" width="12" height="32" rx="3" fill="#00ffa8" opacity="0.42">
+            <animate attributeName="height" dur="2.0s" repeatCount="indefinite" values="28;40;32;42;28"/>
+            <animate attributeName="y" dur="2.0s" repeatCount="indefinite" values="40;28;36;26;40"/>
+          </rect>
+          <rect x="36" y="40" width="12" height="28" rx="3" fill="#8a5cff" opacity="0.40">
+            <animate attributeName="height" dur="2.2s" repeatCount="indefinite" values="24;34;28;36;24"/>
+            <animate attributeName="y" dur="2.2s" repeatCount="indefinite" values="44;34;40;32;44"/>
+          </rect>
+          <g transform="translate(62,6)">
+            <path d="M0 56 C14 44, 22 64, 36 50 S62 40, 78 46 S104 66, 118 44"
+                  fill="none" stroke="#7adfff" stroke-width="2" stroke-linecap="round" stroke-opacity="0.75">
+              <animate attributeName="stroke-opacity" dur="1.7s" repeatCount="indefinite" values="0.55;0.95;0.55"/>
+            </path>
+            <rect x="0" y="68" width="116" height="8" rx="4" fill="#22304b" opacity="0.75"/>
+            <rect x="0" y="68" width="58" height="8" rx="4" fill="#FFD539" opacity="0.9">
+              <animate attributeName="width" dur="2.4s" repeatCount="indefinite" values="44;78;58;92;44"/>
+            </rect>
+          </g>
+        </g>
+
+        <rect x="204" y="0" width="92" height="96" rx="18" fill="#ffffff" opacity="0.80"/>
+        <text x="214" y="20" font-family="Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif"
+              font-size="11" fill="#0a1022" opacity="0.95">Visitors</text>
+
+        <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#0a1022" opacity="0.92">
+          <text x="214" y="40">Total</text><text x="270" y="40">128</text>
+          <text x="214" y="58">Over</text><text x="270" y="58">7</text>
+          <text x="214" y="76">Slots</text><text x="270" y="76">42</text>
+        </g>
+
+        <rect x="206" y="30" width="88" height="52" rx="14" fill="#FFD539" opacity="0">
+          <animate attributeName="opacity" dur="2.0s" repeatCount="indefinite" values="0;0.10;0"/>
+        </rect>
+      </g>
+
+      <!-- bottom nav -->
+      <rect x="316" y="468" width="328" height="34" rx="17" fill="#0a1022" opacity="0.9"/>
+      <circle cx="400" cy="485" r="4.2" fill="#fff6d9" opacity="0.75"/>
+      <circle cx="480" cy="485" r="4.2" fill="#FFD539" opacity="0.95"/>
+      <circle cx="560" cy="485" r="4.2" fill="#fff6d9" opacity="0.75"/>
+    </g>
+  </g>
+</svg>
