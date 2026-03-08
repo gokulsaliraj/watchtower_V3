@@ -1,0 +1,348 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 768" width="1536" height="768" role="img" aria-label="People and Vehicle Access Management: face scanning and license plate scanning side by side">
+  <defs>
+    <style>
+      :root{
+        --bg0:#070A14;
+        --bg1:#0B1022;
+
+        --panel:#0E1630;
+        --panel2:#0B1226;
+
+        --stroke:rgba(255,255,255,0.10);
+        --stroke2:rgba(255,255,255,0.16);
+
+        --txt:rgba(255,255,255,0.92);
+        --muted:rgba(255,255,255,0.62);
+
+        --green:#22C55E;
+        --yellow:#FFD539;
+        --red:#FF5A5F;
+        --cyan:#60A5FA;
+      }
+
+      .bg { fill:url(#bg); }
+
+      .card { fill:rgba(255,255,255,0.04); stroke:var(--stroke); stroke-width:2; }
+      .inner { fill:rgba(255,255,255,0.03); stroke:var(--stroke2); stroke-width:2; }
+      .divider { stroke:rgba(255,255,255,0.08); stroke-width:2; }
+
+      .title { font:900 28px Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial; fill:var(--txt); letter-spacing:0.2px; }
+      .sub { font:700 16px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; fill:var(--muted); }
+      .meta { font:800 16px Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial; fill:rgba(255,255,255,0.72); }
+
+      .chip { fill:rgba(255,255,255,0.06); stroke:rgba(255,255,255,0.12); stroke-width:2; }
+      .chipTxt { font:900 16px Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial; fill:rgba(255,255,255,0.92); letter-spacing:0.3px; }
+
+      .badgeOk { fill:rgba(34,197,94,0.18); stroke:rgba(34,197,94,0.70); stroke-width:2; }
+      .badgeWarn { fill:rgba(255,213,57,0.18); stroke:rgba(255,213,57,0.75); stroke-width:2; }
+      .badgeBad { fill:rgba(255,90,95,0.16); stroke:rgba(255,90,95,0.70); stroke-width:2; }
+      .badgeTxt { font:900 18px Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial; fill:rgba(255,255,255,0.94); letter-spacing:0.4px; }
+
+      .glowG { filter:url(#glowG); }
+      .glowY { filter:url(#glowY); }
+      .glowR { filter:url(#glowR); }
+      .glowC { filter:url(#glowC); }
+
+      .scanLine { stroke:rgba(96,165,250,0.95); stroke-width:4; stroke-linecap:round; filter:url(#glowC); }
+      .scanFill { fill:rgba(96,165,250,0.08); }
+
+      .frameG { fill:rgba(34,197,94,0.08); stroke:rgba(34,197,94,0.95); stroke-width:4; }
+      .frameY { fill:rgba(255,213,57,0.07); stroke:rgba(255,213,57,0.95); stroke-width:4; }
+      .frameR { fill:rgba(255,90,95,0.06); stroke:rgba(255,90,95,0.95); stroke-width:4; }
+
+      .plateBox { fill:rgba(255,213,57,0.06); stroke:rgba(255,213,57,0.95); stroke-width:4; }
+      .vehBox { fill:rgba(96,165,250,0.06); stroke:rgba(96,165,250,0.92); stroke-width:4; }
+      .hud { fill:rgba(0,0,0,0.22); stroke:rgba(255,255,255,0.10); stroke-width:2; }
+
+      .ocr { font:900 26px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; fill:rgba(255,255,255,0.92); letter-spacing:1px; }
+      .small { font:800 14px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; fill:rgba(255,255,255,0.70); }
+
+      .grid { stroke:rgba(255,255,255,0.06); stroke-width:1; }
+      .noise { filter:url(#grain); opacity:0.55; }
+    </style>
+
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--bg0)"/>
+      <stop offset="1" stop-color="var(--bg1)"/>
+    </linearGradient>
+
+    <filter id="shadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+
+    <filter id="glowG" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <filter id="glowY" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <filter id="glowR" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <filter id="glowC" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <filter id="grain" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="matrix" values="
+        1 0 0 0 0
+        0 1 0 0 0
+        0 0 1 0 0
+        0 0 0 0.12 0" in="n" result="a"/>
+      <feBlend mode="overlay" in="SourceGraphic" in2="a"/>
+    </filter>
+
+    <!-- Clip areas for the two video panes -->
+    <clipPath id="faceClip"><rect x="96" y="148" width="640" height="500" rx="22"/></clipPath>
+    <clipPath id="vehClip"><rect x="800" y="148" width="640" height="500" rx="22"/></clipPath>
+
+    <!-- Discrete timeline helper (12.5s loop, 5 states) -->
+    <!-- State 1: 0-2.5  | State 2: 2.5-5 | State 3: 5-7.5 | State 4: 7.5-10 | State 5: 10-12.5 -->
+  </defs>
+
+  <!-- Background -->
+  <rect class="bg" x="0" y="0" width="1536" height="768"/>
+
+
+
+  <!-- Header -->
+  <!-- Two panels container -->
+  <g filter="url(#shadow)">
+    <rect class="card" x="64" y="100" width="1408" height="584" rx="28"/>
+    <path class="divider" d="M768 148 V700"/>
+  </g>
+
+  <!-- Left panel: Face scan -->
+  <g>
+    <text class="meta" x="120" y="130">Face scanning</text>
+    <rect class="inner" x="96" y="148" width="640" height="500" rx="22"/>
+    <g clip-path="url(#faceClip)" class="noise">
+      <!-- faux video scene -->
+      <rect x="96" y="148" width="640" height="500" fill="rgba(255,255,255,0.03)"/>
+      <path d="M96 520 C210 470, 340 600, 460 540 C560 490, 650 560, 736 520"
+            stroke="rgba(255,255,255,0.10)" stroke-width="14" fill="none" opacity="0.30"/>
+      <path d="M96 460 C220 420, 350 520, 470 470 C580 425, 670 500, 736 460"
+            stroke="rgba(255,255,255,0.08)" stroke-width="10" fill="none" opacity="0.30"/>
+
+      <!-- person silhouette -->
+      <g transform="translate(0,0)">
+        <circle cx="410" cy="330" r="54" fill="rgba(255,255,255,0.10)">
+          <animate attributeName="cx" values="395;425;395" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        <rect x="356" y="382" width="120" height="150" rx="60" fill="rgba(255,255,255,0.08)">
+          <animate attributeName="x" values="342;372;342" dur="4s" repeatCount="indefinite"/>
+        </rect>
+      </g>
+
+      <!-- scanning beam -->
+      <g>
+        <rect x="96" y="148" width="640" height="1" class="scanLine">
+          <animate attributeName="y" values="210;620;210" dur="2.2s" repeatCount="indefinite"/>
+        </rect>
+        <rect x="96" y="148" width="640" height="120" class="scanFill">
+          <animate attributeName="y" values="170;580;170" dur="2.2s" repeatCount="indefinite"/>
+        </rect>
+      </g>
+    </g>
+
+    <!-- Face bounding frame changes by state -->
+    <!-- State 1 (MATCH) -->
+    <g opacity="1">
+      <animate attributeName="opacity" dur="12.5s" repeatCount="indefinite" calcMode="discrete"
+               values="1;0;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8"/>
+      <rect class="frameG glowG" x="360" y="250" width="220" height="280" rx="22"/>
+      <!-- landmarks -->
+      <circle cx="430" cy="360" r="5" fill="rgba(34,197,94,0.95)"/>
+      <circle cx="510" cy="360" r="5" fill="rgba(34,197,94,0.95)"/>
+      <circle cx="470" cy="410" r="5" fill="rgba(34,197,94,0.95)"/>
+      <path d="M440 445 Q470 465 500 445" stroke="rgba(34,197,94,0.9)" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <!-- badge -->
+      <g transform="translate(112,660)">
+        <rect class="badgeOk glowG" x="0" y="-58" width="260" height="46" rx="12"/>
+        <text class="badgeTxt" x="16" y="-30">MATCH • EMPLOYEE</text>
+      </g>
+    </g>
+
+    <!-- State 2 (SCANNING) -->
+    <g opacity="0">
+      <animate attributeName="opacity" dur="12.5s" repeatCount="indefinite" calcMode="discrete"
+               values="0;1;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8"/>
+      <rect class="frameY glowY" x="360" y="250" width="220" height="280" rx="22"/>
+      <g transform="translate(112,660)">
+        <rect class="badgeWarn glowY" x="0" y="-58" width="300" height="46" rx="12"/>
+        <text class="badgeTxt" x="16" y="-30">VERIFYING • 0.86</text>
+      </g>
+    </g>
+
+    <!-- State 3 (UNKNOWN) -->
+    <g opacity="0">
+      <animate attributeName="opacity" dur="12.5s" repeatCount="indefinite" calcMode="discrete"
+               values="0;0;1;0;0" keyTimes="0;0.2;0.4;0.6;0.8"/>
+      <rect class="frameR glowR" x="360" y="250" width="220" height="280" rx="22"/>
+      <g transform="translate(112,660)">
+        <rect class="badgeBad glowR" x="0" y="-58" width="320" height="46" rx="12"/>
+        <text class="badgeTxt" x="16" y="-30">UNKNOWN • ESCALATE</text>
+      </g>
+    </g>
+
+    <!-- State 4 (MATCH VISITOR) -->
+    <g opacity="0">
+      <animate attributeName="opacity" dur="12.5s" repeatCount="indefinite" calcMode="discrete"
+               values="0;0;0;1;0" keyTimes="0;0.2;0.4;0.6;0.8"/>
+      <rect class="frameG glowG" x="360" y="250" width="220" height="280" rx="22"/>
+      <g transform="translate(112,660)">
+        <rect class="badgeOk glowG" x="0" y="-58" width="300" height="46" rx="12"/>
+        <text class="badgeTxt" x="16" y="-30">MATCH • VISITOR</text>
+      </g>
+    </g>
+
+    <!-- State 5 (ACCESS GRANTED) -->
+    <g opacity="0">
+      <animate attributeName="opacity" dur="12.5s" repeatCount="indefinite" calcMode="discrete"
+               values="0;0;0;0;1" keyTimes="0;0.2;0.4;0.6;0.8"/>
+      <rect class="frameG glowG" x="360" y="250" width="220" height="280" rx="22"/>
+      <g transform="translate(112,660)">
+        <rect class="badgeOk glowG" x="0" y="-58" width="340" height="46" rx="12"/>
+        <text class="badgeTxt" x="16" y="-30">ACCESS GRANTED</text>
+      </g>
+    </g>
+
+    <!-- Face HUD -->
+    <g>
+      <rect class="hud" x="116" y="174" width="360" height="64" rx="14"/>
+      <text class="small" x="136" y="200">FACE ID</text>
+      <text class="ocr" x="136" y="228">
+        DAVIDSON
+      </text>
+
+    </g>
+  </g>
+
+  <!-- Right panel: Vehicle + plate scan -->
+  <g>
+    <text class="meta" x="800" y="130">Vehicle scanning</text>
+    <rect class="inner" x="800" y="148" width="640" height="500" rx="22"/>
+    <g clip-path="url(#vehClip)" class="noise">
+      <!-- faux road scene -->
+      <rect x="800" y="148" width="640" height="500" fill="rgba(255,255,255,0.03)"/>
+      <path d="M800 560 H1440" stroke="rgba(255,255,255,0.10)" stroke-width="22" opacity="0.25"/>
+      <path d="M800 588 H1440" stroke="rgba(255,255,255,0.08)" stroke-width="10" opacity="0.20"/>
+      <path d="M820 540 L900 480" stroke="rgba(255,255,255,0.08)" stroke-width="6" opacity="0.18"/>
+      <path d="M900 540 L980 480" stroke="rgba(255,255,255,0.08)" stroke-width="6" opacity="0.18"/>
+
+      <!-- vehicle body -->
+      <g>
+        <rect x="1040" y="430" width="240" height="110" rx="26" fill="rgba(255,255,255,0.10)">
+          <animate attributeName="x" values="1010;1100;1010" dur="4.2s" repeatCount="indefinite"/>
+        </rect>
+        <rect x="1085" y="400" width="150" height="60" rx="26" fill="rgba(255,255,255,0.08)">
+          <animate attributeName="x" values="1055;1145;1055" dur="4.2s" repeatCount="indefinite"/>
+        </rect>
+        <circle cx="1100" cy="548" r="18" fill="rgba(255,255,255,0.10)">
+          <animate attributeName="cx" values="1070;1160;1070" dur="4.2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="1240" cy="548" r="18" fill="rgba(255,255,255,0.10)">
+          <animate attributeName="cx" values="1210;1300;1210" dur="4.2s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+
+      <!-- scanning beam -->
+      <g>
+        <rect x="800" y="148" width="640" height="1" class="scanLine">
+          <animate attributeName="y" values="210;620;210" dur="2.0s" repeatCount="indefinite"/>
+        </rect>
+        <rect x="800" y="148" width="640" height="120" class="scanFill">
+          <animate attributeName="y" values="170;580;170" dur="2.0s" repeatCount="indefinite"/>
+        </rect>
+      </g>
+    </g>
+
+    <!-- Vehicle bounding & plate box (always visible, gently moving) -->
+    <rect class="vehBox glowC" x="980" y="364" width="360" height="240" rx="22">
+      <animate attributeName="x" values="970;1010;970" dur="4.2s" repeatCount="indefinite"/>
+    </rect>
+
+    <rect class="plateBox glowY" x="1100" y="522" width="200" height="56" rx="14">
+      <animate attributeName="x" values="1090;1130;1090" dur="4.2s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Plate OCR HUD -->
+    <g>
+      <rect class="hud" x="820" y="174" width="520" height="64" rx="14"/>
+      <text class="small" x="840" y="200">PLATE</text>
+      <text class="ocr" x="840" y="228">
+        <animate attributeName="textLength" dur="12.5s" repeatCount="indefinite" calcMode="discrete"
+                 values="220;220;220;220;220" keyTimes="0;0.2;0.4;0.6;0.8"/>
+        SGX 4932A
+      </text>
+     
+    </g>
+
+    <!-- Access decision badges (discrete) -->
+    <!-- State 1: Vehicle authorized -->
+    <g opacity="1">
+      <animate attributeName="opacity" dur="12.5s" repeatCount="indefinite" calcMode="discrete"
+               values="1;0;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8"/>
+      <g transform="translate(816,660)">
+        <rect class="badgeOk glowG" x="0" y="-58" width="360" height="46" rx="12"/>
+        <text class="badgeTxt" x="16" y="-30">VEHICLE AUTHORIZED</text>
+      </g>
+    </g>
+
+    <!-- State 2: Barrier opening -->
+    <g opacity="0">
+      <animate attributeName="opacity" dur="12.5s" repeatCount="indefinite" calcMode="discrete"
+               values="0;1;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8"/>
+      <g transform="translate(816,660)">
+        <rect class="badgeWarn glowY" x="0" y="-58" width="320" height="46" rx="12"/>
+        <text class="badgeTxt" x="16" y="-30">OPENING BARRIER</text>
+      </g>
+    </g>
+
+    <!-- State 3: Plate not in whitelist -->
+    <g opacity="0">
+      <animate attributeName="opacity" dur="12.5s" repeatCount="indefinite" calcMode="discrete"
+               values="0;0;1;0;0" keyTimes="0;0.2;0.4;0.6;0.8"/>
+      <g transform="translate(816,660)">
+        <rect class="badgeBad glowR" x="0" y="-58" width="360" height="46" rx="12"/>
+        <text class="badgeTxt" x="16" y="-30">NOT WHITELISTED</text>
+      </g>
+    </g>
+
+    <!-- State 4: Manual verification -->
+    <g opacity="0">
+      <animate attributeName="opacity" dur="12.5s" repeatCount="indefinite" calcMode="discrete"
+               values="0;0;0;1;0" keyTimes="0;0.2;0.4;0.6;0.8"/>
+      <g transform="translate(816,660)">
+        <rect class="badgeWarn glowY" x="0" y="-58" width="380" height="46" rx="12"/>
+        <text class="badgeTxt" x="16" y="-30">MANUAL VERIFICATION</text>
+      </g>
+    </g>
+
+    <!-- State 5: Access granted -->
+    <g opacity="0">
+      <animate attributeName="opacity" dur="12.5s" repeatCount="indefinite" calcMode="discrete"
+               values="0;0;0;0;1" keyTimes="0;0.2;0.4;0.6;0.8"/>
+      <g transform="translate(816,660)">
+        <rect class="badgeOk glowG" x="0" y="-58" width="320" height="46" rx="12"/>
+        <text class="badgeTxt" x="16" y="-30">ACCESS GRANTED</text>
+      </g>
+    </g>
+
+    <!-- Plate overlay text inside the plate box -->
+    <g>
+      <rect class="hud" x="1104" y="526" width="192" height="48" rx="12" opacity="0.45"/>
+      <text class="ocr" x="1200" y="560" text-anchor="middle" dominant-baseline="middle">SGX 4932A</text>
+    </g>
+  </g>
+
+
+</svg>

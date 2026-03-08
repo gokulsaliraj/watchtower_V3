@@ -1,0 +1,527 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 768" width="1536" height="768" role="img" aria-label="WatchTower CCTV tile wall with centered premium alert carousel (5 alerts)">
+  <defs>
+    <style>
+      :root{
+        --bg0:#05070D;
+        --bg1:#0A0F1D;
+
+        --strokeA:rgba(140,160,255,0.35);
+        --txt:rgba(255,255,255,0.92);
+        --txt2:rgba(255,255,255,0.70);
+
+        --yellow:#FFD539;
+        --danger:#FF5A5F;
+
+        --card:rgba(255,255,255,0.96);
+        --cardStroke:rgba(16,24,40,0.14);
+
+        --btn:#101828;
+        --btnTxt:rgba(255,255,255,0.95);
+      }
+
+      .bg { fill:url(#bgGrad); }
+
+      .gridMajor { stroke:rgba(255,255,255,0.06); stroke-width:1; }
+      .gridMinor { stroke:rgba(255,255,255,0.03); stroke-width:1; }
+
+      .frame { fill:rgba(7,10,20,0.65); stroke:rgba(140,160,255,0.20); stroke-width:2; }
+      .camShell { fill:rgba(8,10,18,0.70); stroke:var(--strokeA); stroke-width:2; }
+      .camInner { fill:rgba(255,255,255,0.04); stroke:rgba(255,255,255,0.10); stroke-width:2; }
+
+      .camHdr  { font:700 18px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; fill:var(--txt); letter-spacing:0.2px; }
+      .camMeta { font:700 18px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; fill:var(--txt2); letter-spacing:0.2px; }
+      .rec { fill:var(--yellow); }
+      .recText { fill:var(--yellow); }
+
+      .alertCard { fill:var(--card); stroke:var(--cardStroke); stroke-width:2; }
+      .hdrW { fill:rgba(255,213,57,0.14); stroke:rgba(255,213,57,0.55); stroke-width:2; }
+      .hdrD { fill:rgba(255,90,95,0.10); stroke:rgba(255,90,95,0.55); stroke-width:2; }
+
+      .aTitle { font:900 44px Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial; fill:#101828; }
+      .aMeta  { font:900 20px Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial; fill:#344054; }
+      .aSub   { font:750 18px Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial; fill:#667085; }
+
+      .btn { fill:var(--btn); }
+      .btnTxt { font:900 18px Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial; fill:var(--btnTxt); }
+
+      .snapFrame { fill:#0B1220; stroke:rgba(16,24,40,0.12); stroke-width:2; }
+      .snapGrid { stroke:rgba(255,255,255,0.08); stroke-width:1; }
+
+      .bbox { fill:rgba(255,213,57,0.08); stroke:rgba(255,213,57,0.95); stroke-width:3; }
+      .bbox2 { fill:rgba(255,213,57,0.06); stroke:rgba(255,213,57,0.75); stroke-width:3; }
+
+      .zone { fill:rgba(255,213,57,0.10); stroke:rgba(255,213,57,0.65); stroke-width:2; }
+
+      .track { fill:none; stroke:rgba(255,213,57,0.90); stroke-width:3; stroke-dasharray:8 9; stroke-linecap:round; }
+      .heatHigh { fill:rgba(255,90,95,0.18); }
+      .heatMed  { fill:rgba(255,213,57,0.16); }
+
+      .shadow { filter:url(#shadow); }
+      .softShadow { filter:url(#softShadow); }
+      .glowCam { filter:url(#glowCam); }
+      .glowY { filter:url(#glowYellow); }
+      .glowR { filter:url(#glowRed); }
+    </style>
+
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--bg0)"/>
+      <stop offset="1" stop-color="var(--bg1)"/>
+    </linearGradient>
+
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#101828" flood-opacity="0.28"/>
+    </filter>
+
+    <filter id="softShadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#101828" flood-opacity="0.22"/>
+    </filter>
+
+    <filter id="glowCam" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.1" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="glowYellow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5.5" result="b"/>
+      <feColorMatrix in="b" type="matrix" values="
+        1 0 0 0 0
+        0 1 0 0 0
+        0 0 1 0 0
+        0 0 0 0.85 0" result="a"/>
+      <feMerge>
+        <feMergeNode in="a"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="glowRed" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5.5" result="b"/>
+      <feColorMatrix in="b" type="matrix" values="
+        1 0 0 0 0
+        0 1 0 0 0
+        0 0 1 0 0
+        0 0 0 0.85 0" result="a"/>
+      <feMerge>
+        <feMergeNode in="a"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="grain" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="matrix" values="
+        1 0 0 0 0
+        0 1 0 0 0
+        0 0 1 0 0
+        0 0 0 0.10 0" in="n" result="a"/>
+      <feBlend mode="overlay" in="SourceGraphic" in2="a"/>
+    </filter>
+
+    <linearGradient id="feedGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="rgba(255,255,255,0.08)"/>
+      <stop offset="1" stop-color="rgba(255,255,255,0.02)"/>
+    </linearGradient>
+
+    <!-- clip camera header row so timestamp never overflows -->
+    <clipPath id="camHdrClip"><rect x="24" y="34" width="400" height="44" rx="12"/></clipPath>
+
+    <!-- clip alert header so CAM label never overflows -->
+    <clipPath id="hdrClip"><rect x="18" y="18" width="660" height="80" rx="16"/></clipPath>
+
+    <!-- snapshot clip -->
+    <clipPath id="snapClip"><rect x="0" y="0" width="616" height="348" rx="14"/></clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect class="bg" x="0" y="0" width="1536" height="768"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.9">
+    <g class="gridMinor">
+      <g>
+        <path d="M48 0 V768"/><path d="M96 0 V768"/><path d="M144 0 V768"/><path d="M192 0 V768"/><path d="M240 0 V768"/>
+        <path d="M288 0 V768"/><path d="M336 0 V768"/><path d="M384 0 V768"/><path d="M432 0 V768"/><path d="M480 0 V768"/>
+        <path d="M528 0 V768"/><path d="M576 0 V768"/><path d="M624 0 V768"/><path d="M672 0 V768"/><path d="M720 0 V768"/>
+        <path d="M768 0 V768"/><path d="M816 0 V768"/><path d="M864 0 V768"/><path d="M912 0 V768"/><path d="M960 0 V768"/>
+        <path d="M1008 0 V768"/><path d="M1056 0 V768"/><path d="M1104 0 V768"/><path d="M1152 0 V768"/><path d="M1200 0 V768"/>
+        <path d="M1248 0 V768"/><path d="M1296 0 V768"/><path d="M1344 0 V768"/><path d="M1392 0 V768"/><path d="M1440 0 V768"/>
+        <path d="M1488 0 V768"/>
+      </g>
+      <g>
+        <path d="M0 48 H1536"/><path d="M0 96 H1536"/><path d="M0 144 H1536"/><path d="M0 192 H1536"/><path d="M0 240 H1536"/>
+        <path d="M0 288 H1536"/><path d="M0 336 H1536"/><path d="M0 384 H1536"/><path d="M0 432 H1536"/><path d="M0 480 H1536"/>
+        <path d="M0 528 H1536"/><path d="M0 576 H1536"/><path d="M0 624 H1536"/><path d="M0 672 H1536"/><path d="M0 720 H1536"/>
+      </g>
+    </g>
+    <g class="gridMajor">
+      <path d="M0 0 H1536"/><path d="M0 384 H1536"/><path d="M0 768 H1536"/>
+      <path d="M0 0 V768"/><path d="M768 0 V768"/><path d="M1536 0 V768"/>
+    </g>
+  </g>
+
+  <!-- WatchTower wall -->
+  <g class="shadow">
+    <rect class="frame" x="38" y="34" width="1460" height="700" rx="34"/>
+  </g>
+
+  <!-- CCTV tiles -->
+  <g filter="url(#grain)">
+    <!-- Layout: tile 448x270; row1 y=82 row2 y=392; col x=90,544,998 -->
+    <!-- CAM 01 -->
+    <g transform="translate(90,82)" class="glowCam">
+      <rect class="camShell" x="0" y="0" width="448" height="270" rx="34"/>
+      <rect class="camInner" x="24" y="34" width="400" height="196" rx="28" fill="url(#feedGrad)"/>
+      <g clip-path="url(#camHdrClip)">
+        <text class="camHdr" x="42" y="66">CAM 01</text>
+        <circle class="rec" cx="132" cy="58" r="7"/>
+        <text class="camMeta recText" x="152" y="66">REC 2026-03-03 14:28</text>
+      </g>
+      <circle cx="160" cy="182" r="18" fill="rgba(255,255,255,0.08)">
+        <animate attributeName="cx" values="140;260;140" dur="3.4s" repeatCount="indefinite"/>
+      </circle>
+      <path d="M70 170 L210 80" stroke="rgba(255,255,255,0.10)" stroke-width="6" opacity="0.25"/>
+      <path d="M90 190 L230 100" stroke="rgba(255,255,255,0.08)" stroke-width="4" opacity="0.22"/>
+    </g>
+
+    <!-- CAM 02 -->
+    <g transform="translate(544,82)" class="glowCam">
+      <rect class="camShell" x="0" y="0" width="448" height="270" rx="34"/>
+      <rect class="camInner" x="24" y="34" width="400" height="196" rx="28" fill="url(#feedGrad)"/>
+      <g clip-path="url(#camHdrClip)">
+        <text class="camHdr" x="42" y="66">CAM 02</text>
+        <circle class="rec" cx="132" cy="58" r="7"/>
+        <text class="camMeta recText" x="152" y="66">REC 2026-03-03 14:28</text>
+      </g>
+      <rect x="150" y="166" width="70" height="30" rx="11" fill="rgba(255,255,255,0.08)">
+        <animate attributeName="x" values="150;260;150" dur="3.0s" repeatCount="indefinite"/>
+      </rect>
+      <path d="M90 210 L260 60" stroke="rgba(255,255,255,0.12)" stroke-width="6" opacity="0.26"/>
+      <path d="M120 220 L290 70" stroke="rgba(255,255,255,0.09)" stroke-width="4" opacity="0.22"/>
+    </g>
+
+    <!-- CAM 03 -->
+    <g transform="translate(998,82)" class="glowCam">
+      <rect class="camShell" x="0" y="0" width="448" height="270" rx="34"/>
+      <rect class="camInner" x="24" y="34" width="400" height="196" rx="28" fill="url(#feedGrad)"/>
+      <g clip-path="url(#camHdrClip)">
+        <text class="camHdr" x="42" y="66">CAM 03</text>
+        <circle class="rec" cx="132" cy="58" r="7"/>
+        <text class="camMeta recText" x="152" y="66">REC 2026-03-03 14:28</text>
+      </g>
+      <path d="M80 150 C140 120, 200 180, 260 150 C320 120, 360 180, 400 150"
+            stroke="rgba(255,255,255,0.14)" stroke-width="3" fill="none">
+        <animate attributeName="d" dur="3.2s" repeatCount="indefinite"
+          values="
+          M80 150 C140 120, 200 180, 260 150 C320 120, 360 180, 400 150;
+          M80 156 C140 186, 200 126, 260 156 C320 186, 360 126, 400 156;
+          M80 150 C140 120, 200 180, 260 150 C320 120, 360 180, 400 150"/>
+      </path>
+    </g>
+
+    <!-- CAM 04 -->
+    <g transform="translate(90,392)" class="glowCam">
+      <rect class="camShell" x="0" y="0" width="448" height="270" rx="34"/>
+      <rect class="camInner" x="24" y="34" width="400" height="196" rx="28" fill="url(#feedGrad)"/>
+      <g clip-path="url(#camHdrClip)">
+        <text class="camHdr" x="42" y="66">CAM 04</text>
+        <circle class="rec" cx="132" cy="58" r="7"/>
+        <text class="camMeta recText" x="152" y="66">REC 2026-03-03 14:28</text>
+      </g>
+      <circle cx="210" cy="176" r="18" fill="rgba(255,255,255,0.08)">
+        <animate attributeName="cy" values="160;192;160" dur="2.8s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+
+    <!-- CAM 05 -->
+    <g transform="translate(544,392)" class="glowCam">
+      <rect class="camShell" x="0" y="0" width="448" height="270" rx="34"/>
+      <rect class="camInner" x="24" y="34" width="400" height="196" rx="28" fill="url(#feedGrad)"/>
+      <g clip-path="url(#camHdrClip)">
+        <text class="camHdr" x="42" y="66">CAM 05</text>
+        <circle class="rec" cx="132" cy="58" r="7"/>
+        <text class="camMeta recText" x="152" y="66">REC 2026-03-03 14:28</text>
+      </g>
+      <path d="M30 128 H418" stroke="rgba(255,255,255,0.10)" stroke-width="18" opacity="0.22"/>
+      <rect x="140" y="160" width="92" height="34" rx="12" fill="rgba(255,255,255,0.08)">
+        <animate attributeName="x" values="140;268;140" dur="3.3s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+
+    <!-- CAM 06 -->
+    <g transform="translate(998,392)" class="glowCam">
+      <rect class="camShell" x="0" y="0" width="448" height="270" rx="34"/>
+      <rect class="camInner" x="24" y="34" width="400" height="196" rx="28" fill="url(#feedGrad)"/>
+      <g clip-path="url(#camHdrClip)">
+        <text class="camHdr" x="42" y="66">CAM 06</text>
+        <circle class="rec" cx="132" cy="58" r="7"/>
+        <text class="camMeta recText" x="152" y="66">REC 2026-03-03 14:28</text>
+      </g>
+      <circle cx="240" cy="186" r="16" fill="rgba(255,255,255,0.08)">
+        <animate attributeName="cx" values="205;295;205" dur="3.1s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+  </g>
+
+  <!-- Constant focus dimmer -->
+  <rect x="38" y="34" width="1460" height="700" rx="34" fill="rgba(0,0,0,0.28)"/>
+
+  <!-- ===================== ALERT CAROUSEL (CENTERED, NO FADE) ===================== -->
+  <!-- Each alert shows for 2.5s (12.5s loop). Switching is instant via calcMode="discrete". -->
+  <!-- Popup at x=420 y=60 w=696 h=648 -->
+
+  <!-- ========= ALERT 1: Tailgating (YELLOW) ========= -->
+  <g class="softShadow" opacity="1">
+    <animate attributeName="opacity" dur="12.5s" repeatCount="indefinite" calcMode="discrete"
+      values="1;0;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8"/>
+    <g transform="translate(420,60)">
+      <rect x="-8" y="-8" width="712" height="664" rx="28" fill="none" stroke="rgba(255,213,57,0.95)" stroke-width="12" class="glowY" opacity="0.85"/>
+      <rect class="alertCard" x="0" y="0" width="696" height="648" rx="22"/>
+      <rect class="hdrW" x="18" y="18" width="660" height="80" rx="16"/>
+
+      <!-- HEADER (icon vertically centered with heading line) -->
+      <g clip-path="url(#hdrClip)">
+        <g transform="translate(18,18)">
+          <!-- shared centerline y=40 -->
+          <g transform="translate(16,25)">
+            <path d="M20 26 L36 2 L52 26 Z" fill="var(--yellow)" stroke="#101828" stroke-width="3"/>
+            <path d="M36 10 v10" stroke="#101828" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="36" cy="22" r="2.6" fill="#101828"/>
+          </g>
+          <text class="aTitle" x="86" y="40" dominant-baseline="middle">Tailgating detected</text>
+          <text class="aMeta"  x="648" y="40" dominant-baseline="middle" text-anchor="end">Cam 01</text>
+        </g>
+      </g>
+
+      <text class="aSub" x="34" y="148">2 persons entered with 1 credential</text>
+      <text class="aSub" x="34" y="176">Auto clip saved with context</text>
+
+      <g transform="translate(40,204)">
+        <rect class="snapFrame" x="0" y="0" width="616" height="348" rx="14"/>
+        <g clip-path="url(#snapClip)">
+          <path class="snapGrid" d="M0 174 H616 M308 0 V348"/>
+          <rect class="zone" x="28" y="26" width="240" height="280" rx="12"/>
+          <rect class="bbox" x="110" y="72" width="140" height="210" rx="10">
+            <animate attributeName="x" values="110;122;110" dur="1.2s" repeatCount="indefinite"/>
+          </rect>
+          <rect class="bbox2" x="252" y="80" width="140" height="210" rx="10" opacity="0.9">
+            <animate attributeName="x" values="252;238;252" dur="1.2s" repeatCount="indefinite"/>
+          </rect>
+          <rect x="0" y="0" width="616" height="348" fill="rgba(255,255,255,0.02)"/>
+        </g>
+      </g>
+
+      <!-- Button with bottom margin -->
+      <g transform="translate(40,566)">
+        <rect class="btn" x="0" y="0" width="616" height="54" rx="6"/>
+        <text class="btnTxt" x="308" y="27" text-anchor="middle" dominant-baseline="middle">View</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ========= ALERT 2: Object detected (YELLOW) ========= -->
+  <g class="softShadow" opacity="0">
+    <animate attributeName="opacity" dur="12.5s" repeatCount="indefinite" calcMode="discrete"
+      values="0;1;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8"/>
+    <g transform="translate(420,60)">
+      <rect x="-8" y="-8" width="712" height="664" rx="28" fill="none" stroke="rgba(255,213,57,0.95)" stroke-width="12" class="glowY" opacity="0.85"/>
+      <rect class="alertCard" x="0" y="0" width="696" height="648" rx="22"/>
+      <rect class="hdrW" x="18" y="18" width="660" height="80" rx="16"/>
+
+      <g clip-path="url(#hdrClip)">
+        <g transform="translate(18,18)">
+          <g transform="translate(16,20)">
+            <rect x="18" y="6" width="36" height="36" rx="10" fill="var(--yellow)" stroke="#101828" stroke-width="3"/>
+            <path d="M26 26h20M26 36h14" stroke="#101828" stroke-width="3" stroke-linecap="round"/>
+          </g>
+          <text class="aTitle" x="86" y="40" dominant-baseline="middle">Object detected</text>
+          <text class="aMeta"  x="648" y="40" dominant-baseline="middle" text-anchor="end">Cam 02</text>
+        </g>
+      </g>
+
+      <text class="aSub" x="34" y="148">Unattended bag detected</text>
+      <text class="aSub" x="34" y="176">Owner not nearby for 00:45</text>
+
+      <g transform="translate(40,204)">
+        <rect class="snapFrame" x="0" y="0" width="616" height="348" rx="14"/>
+        <g clip-path="url(#snapClip)">
+          <path class="snapGrid" d="M0 174 H616 M308 0 V348"/>
+          <rect class="bbox" x="190" y="54" width="190" height="250" rx="10" opacity="0.85">
+            <animate attributeName="y" values="54;66;54" dur="1.4s" repeatCount="indefinite"/>
+          </rect>
+          <rect class="bbox2" x="388" y="190" width="170" height="120" rx="10">
+            <animate attributeName="x" values="388;372;388" dur="1.4s" repeatCount="indefinite"/>
+          </rect>
+          <rect x="0" y="0" width="616" height="348" fill="rgba(255,255,255,0.02)"/>
+        </g>
+      </g>
+
+      <g transform="translate(40,566)">
+        <rect class="btn" x="0" y="0" width="616" height="54" rx="6"/>
+        <text class="btnTxt" x="308" y="27" text-anchor="middle" dominant-baseline="middle">View</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ========= ALERT 3: Abnormal activity (RED) ========= -->
+  <g class="softShadow" opacity="0">
+    <animate attributeName="opacity" dur="12.5s" repeatCount="indefinite" calcMode="discrete"
+      values="0;0;1;0;0" keyTimes="0;0.2;0.4;0.6;0.8"/>
+    <g transform="translate(420,60)">
+      <rect x="-8" y="-8" width="712" height="664" rx="28" fill="none" stroke="rgba(255,90,95,0.95)" stroke-width="12" class="glowR" opacity="0.85"/>
+      <rect class="alertCard" x="0" y="0" width="696" height="648" rx="22"/>
+      <rect class="hdrD" x="18" y="18" width="660" height="80" rx="16"/>
+
+      <g clip-path="url(#hdrClip)">
+        <g transform="translate(18,18)">
+          <g transform="translate(16,20)">
+            <circle cx="36" cy="22" r="20" fill="var(--danger)" opacity="0.95"/>
+            <path d="M18 26 C22 12, 28 40, 36 18 C42 4, 50 42, 56 12" stroke="#101828" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </g>
+          <text class="aTitle" x="86" y="40" dominant-baseline="middle">Abnormal activity</text>
+          <text class="aMeta"  x="648" y="40" dominant-baseline="middle" text-anchor="end">Cam 04</text>
+        </g>
+      </g>
+
+      <text class="aSub" x="34" y="148">Loitering in restricted area</text>
+      <text class="aSub" x="34" y="176">Duration 03:12 • Conf 0.86</text>
+
+      <g transform="translate(40,204)">
+        <rect class="snapFrame" x="0" y="0" width="616" height="348" rx="14"/>
+        <g clip-path="url(#snapClip)">
+          <path class="snapGrid" d="M0 174 H616 M308 0 V348"/>
+          <path class="track" d="M170 210 C240 140, 360 140, 430 210 C360 280, 240 280, 170 210 Z">
+            <animate attributeName="stroke-dashoffset" values="0;70" dur="1.2s" repeatCount="indefinite"/>
+          </path>
+          <circle cx="170" cy="210" r="7" fill="rgba(255,213,57,0.95)">
+            <animateMotion dur="2.0s" repeatCount="indefinite"
+              path="M170 210 C240 140, 360 140, 430 210 C360 280, 240 280, 170 210 Z"/>
+          </circle>
+          <rect x="0" y="0" width="616" height="348" fill="rgba(255,255,255,0.02)"/>
+        </g>
+      </g>
+
+      <g transform="translate(40,566)">
+        <rect class="btn" x="0" y="0" width="616" height="54" rx="6"/>
+        <text class="btnTxt" x="308" y="27" text-anchor="middle" dominant-baseline="middle">View</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ========= ALERT 4: Out of hours pool (RED) ========= -->
+  <g class="softShadow" opacity="0">
+    <animate attributeName="opacity" dur="12.5s" repeatCount="indefinite" calcMode="discrete"
+      values="0;0;0;1;0" keyTimes="0;0.2;0.4;0.6;0.8"/>
+    <g transform="translate(420,60)">
+      <rect x="-8" y="-8" width="712" height="664" rx="28" fill="none" stroke="rgba(255,90,95,0.95)" stroke-width="12" class="glowR" opacity="0.85"/>
+      <rect class="alertCard" x="0" y="0" width="696" height="648" rx="22"/>
+      <rect class="hdrD" x="18" y="18" width="660" height="80" rx="16"/>
+
+      <g clip-path="url(#hdrClip)">
+        <g transform="translate(18,18)">
+          <g transform="translate(16,20)">
+            <circle cx="36" cy="22" r="20" fill="var(--danger)" opacity="0.95"/>
+            <path d="M18 30 C26 26, 30 34, 36 30 C42 26, 48 34, 56 30" stroke="#101828" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M22 18 C30 6, 42 6, 50 18" stroke="#101828" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </g>
+          <text class="aTitle" x="86" y="40" dominant-baseline="middle">Unauthorized pool use</text>
+          <text class="aMeta"  x="648" y="40" dominant-baseline="middle" text-anchor="end">Cam 06</text>
+        </g>
+      </g>
+
+      <text class="aSub" x="34" y="148">Activity detected at 02:14</text>
+      <text class="aSub" x="34" y="176">Restricted after 22:00</text>
+
+      <g transform="translate(40,204)">
+        <rect class="snapFrame" x="0" y="0" width="616" height="348" rx="14"/>
+        <g clip-path="url(#snapClip)">
+          <rect x="26" y="56" width="564" height="240" rx="18" fill="rgba(80,150,255,0.16)" stroke="rgba(255,255,255,0.10)" stroke-width="2"/>
+          <path d="M70 130 C150 112, 230 148, 310 130 C390 112, 470 148, 550 130"
+                stroke="rgba(255,255,255,0.22)" stroke-width="3" fill="none"/>
+          <path d="M70 200 C150 182, 230 218, 310 200 C390 182, 470 218, 550 200"
+                stroke="rgba(255,255,255,0.18)" stroke-width="3" fill="none"/>
+          <rect class="zone" x="22" y="52" width="572" height="248" rx="18"/>
+          <rect class="bbox" x="290" y="162" width="96" height="96" rx="10">
+            <animate attributeName="x" values="290;308;290" dur="1.3s" repeatCount="indefinite"/>
+          </rect>
+          <rect x="0" y="0" width="616" height="348" fill="rgba(255,255,255,0.02)"/>
+        </g>
+      </g>
+
+      <g transform="translate(40,566)">
+        <rect class="btn" x="0" y="0" width="616" height="54" rx="6"/>
+        <text class="btnTxt" x="308" y="27" text-anchor="middle" dominant-baseline="middle">View</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ========= ALERT 5: Crowd density high (YELLOW) ========= -->
+  <g class="softShadow" opacity="0">
+    <animate attributeName="opacity" dur="12.5s" repeatCount="indefinite" calcMode="discrete"
+      values="0;0;0;0;1" keyTimes="0;0.2;0.4;0.6;0.8"/>
+    <g transform="translate(420,60)">
+      <rect x="-8" y="-8" width="712" height="664" rx="28" fill="none" stroke="rgba(255,213,57,0.95)" stroke-width="12" class="glowY" opacity="0.85"/>
+      <rect class="alertCard" x="0" y="0" width="696" height="648" rx="22"/>
+      <rect class="hdrW" x="18" y="18" width="660" height="80" rx="16"/>
+
+      <g clip-path="url(#hdrClip)">
+        <g transform="translate(18,18)">
+          <g transform="translate(16,25)">
+            <path d="M16 34c0-10 26-10 26 0" stroke="#101828" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <circle cx="30" cy="18" r="12" fill="var(--yellow)" stroke="#101828" stroke-width="3"/>
+            <circle cx="12" cy="24" r="9" fill="rgba(255,213,57,0.65)" stroke="#101828" stroke-width="2.6"/>
+            <circle cx="48" cy="24" r="9" fill="rgba(255,213,57,0.65)" stroke="#101828" stroke-width="2.6"/>
+          </g>
+          <text class="aTitle" x="86" y="40" dominant-baseline="middle">Crowd density high</text>
+          <text class="aMeta"  x="648" y="40" dominant-baseline="middle" text-anchor="end">Area</text>
+        </g>
+      </g>
+
+      <text class="aSub" x="34" y="148">Threshold exceeded (est. 18)</text>
+      <text class="aSub" x="34" y="176">Suggested broadcast instruction</text>
+
+      <g transform="translate(40,204)">
+        <rect class="snapFrame" x="0" y="0" width="616" height="348" rx="14"/>
+        <g clip-path="url(#snapClip)">
+          <rect x="0" y="0" width="616" height="348" class="heatMed">
+            <animate attributeName="opacity" values="0.82;1;0.82" dur="1.0s" repeatCount="indefinite"/>
+          </rect>
+          <rect x="240" y="98" width="376" height="250" class="heatHigh" opacity="0.9">
+            <animate attributeName="opacity" values="0.60;0.95;0.60" dur="1.0s" repeatCount="indefinite"/>
+          </rect>
+
+          <g opacity="0.85">
+            <circle cx="140" cy="132" r="7" fill="rgba(255,255,255,0.85)">
+              <animate attributeName="cx" values="140;156;140" dur="1.2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="168" cy="154" r="7" fill="rgba(255,255,255,0.80)">
+              <animate attributeName="cy" values="154;166;154" dur="1.2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="202" cy="138" r="7" fill="rgba(255,255,255,0.78)">
+              <animate attributeName="cx" values="202;214;202" dur="1.2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="226" cy="162" r="7" fill="rgba(255,255,255,0.75)">
+              <animate attributeName="cy" values="162;172;162" dur="1.2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="284" cy="170" r="7" fill="rgba(255,255,255,0.74)">
+              <animate attributeName="cx" values="284;270;284" dur="1.2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="344" cy="180" r="7" fill="rgba(255,255,255,0.72)">
+              <animate attributeName="cy" values="180;194;180" dur="1.2s" repeatCount="indefinite"/>
+            </circle>
+          </g>
+
+          <rect x="0" y="0" width="616" height="348" fill="rgba(255,255,255,0.02)"/>
+        </g>
+      </g>
+
+      <g transform="translate(40,566)">
+        <rect class="btn" x="0" y="0" width="616" height="54" rx="6"/>
+        <text class="btnTxt" x="308" y="27" text-anchor="middle" dominant-baseline="middle">View</text>
+      </g>
+    </g>
+  </g>
+
+</svg>
