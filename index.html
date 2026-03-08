@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WatchTower | AI-Powered Security</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #ffffff;
@@ -13,11 +13,11 @@
             --text-dim: #6b7280;
             --text-dark: #111827;
             --text-mid: #374151;
-            --glass: rgba(0, 0, 0, 0.03);
-            --glass-border: rgba(0, 0, 0, 0.08);
+            --glass: rgba(0,0,0,0.03);
+            --glass-border: rgba(0,0,0,0.08);
             --card-bg: #f9fafb;
             --card-border: #e5e7eb;
-            --nav-bg: rgba(255, 255, 255, 0.85);
+            --nav-bg: rgba(255,255,255,0.85);
             --section-alt-bg: #f9fafb;
             --footer-bg: #111827;
             --footer-text: #d1d5db;
@@ -33,11 +33,11 @@
             --text-dim: #9ca3af;
             --text-dark: #f9fafb;
             --text-mid: #d1d5db;
-            --glass: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass: rgba(255,255,255,0.03);
+            --glass-border: rgba(255,255,255,0.08);
             --card-bg: #161622;
             --card-border: #2d2d4e;
-            --nav-bg: rgba(13, 13, 20, 0.92);
+            --nav-bg: rgba(13,13,20,0.92);
             --section-alt-bg: #111120;
             --footer-bg: #080810;
             --footer-text: #9ca3af;
@@ -47,7 +47,7 @@
         }
 
         html { scroll-behavior: smooth; scroll-padding-top: 100px; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
 
         body {
             background-color: var(--bg);
@@ -60,107 +60,188 @@
         .bg-glow {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
             background:
-                radial-gradient(circle at 10% 10%, rgba(251, 191, 36, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 90% 90%, rgba(217, 119, 6, 0.06) 0%, transparent 40%);
+                radial-gradient(circle at 10% 10%, rgba(251,191,36,0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(217,119,6,0.06) 0%, transparent 40%);
             filter: blur(60px);
+            pointer-events: none;
         }
 
-        /* NAV */
-        .nav-wrapper { position: fixed; top: 25px; width: 100%; display: flex; justify-content: center; z-index: 1000; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        /* ── NAV ── */
+        .nav-wrapper {
+            position: fixed; top: 25px; width: 100%;
+            display: flex; justify-content: center; z-index: 1000;
+            transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+        }
         .nav-hidden { transform: translateY(-110px); opacity: 0; }
+
         .pill-nav {
             display: flex; align-items: center; justify-content: space-between;
-            width: 90%; max-width: 1100px; padding: 10px 10px 10px 30px;
-            background: var(--nav-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--card-border); border-radius: 100px;
+            width: 90%; max-width: 1100px;
+            padding: 10px 10px 10px 30px;
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 100px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.07);
             transition: background 0.4s, border-color 0.4s;
         }
-        .logo { font-weight: 600; font-size: 1.5rem; letter-spacing: 1px; display: flex; align-items: center; gap: 12px; color: var(--text-dark); text-decoration: none; transition: color 0.4s; }
-        .brand { display: flex; align-items: center; }
-        .brand-img { height: 40px; width: auto; object-fit: contain; transition: transform 0.3s ease; }
-        .brand:hover .brand-img { transform: scale(1.06); }
+
+        .logo {
+            font-weight: 600; font-size: 1.5rem; letter-spacing: 1px;
+            display: flex; align-items: center; gap: 12px;
+            color: var(--text-dark); text-decoration: none;
+            transition: color 0.4s;
+        }
+        .brand-img { height: 36px; width: auto; object-fit: contain; transition: transform 0.3s ease; }
+        .logo:hover .brand-img { transform: scale(1.06); }
+
         .nav-menu { display: flex; align-items: center; gap: 10px; }
         .nav-links { display: flex; gap: 5px; align-items: center; }
-        .nav-links a { color: var(--text-mid); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 10px 20px; border-radius: 50px; transition: 0.3s; }
-        .nav-links a:hover { color: var(--text-dark); background: rgba(0, 0, 0, 0.05); }
+        .nav-links a {
+            color: var(--text-mid); text-decoration: none;
+            font-size: 0.85rem; font-weight: 500;
+            padding: 10px 20px; border-radius: 50px; transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--text-dark); background: rgba(0,0,0,0.05); }
         [data-theme="dark"] .nav-links a:hover { background: rgba(255,255,255,0.07); }
 
-        /* PRODUCTS DROPDOWN */
         .nav-dropdown { position: relative; }
-        .nav-dropdown-trigger { color: var(--text-mid); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 10px 20px; border-radius: 50px; transition: 0.3s; cursor: pointer; display: flex; align-items: center; gap: 6px; user-select: none; background: transparent; border: none; font-family: inherit; }
-        .nav-dropdown-trigger:hover, .nav-dropdown.open .nav-dropdown-trigger { color: var(--text-dark); background: rgba(0, 0, 0, 0.05); }
-        [data-theme="dark"] .nav-dropdown-trigger:hover, [data-theme="dark"] .nav-dropdown.open .nav-dropdown-trigger { background: rgba(255,255,255,0.07); }
-        .dropdown-chevron { width: 14px; height: 14px; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-        .nav-dropdown.open .dropdown-chevron { transform: rotate(180deg); }
-        .dropdown-panel {
-            position: absolute; top: calc(100% + 18px); left: 50%; transform: translateX(-50%) translateY(-10px) scale(0.97);
-            width: 560px; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
-            border: 1px solid var(--card-border); border-radius: 24px; padding: 20px;
-            opacity: 0; visibility: hidden; pointer-events: none; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0,0,0,0.03);
+        .nav-dropdown-trigger {
+            color: var(--text-mid); text-decoration: none;
+            font-size: 0.85rem; font-weight: 500;
+            padding: 10px 20px; border-radius: 50px;
+            transition: 0.3s; cursor: pointer;
+            display: flex; align-items: center; gap: 6px;
+            user-select: none; background: transparent;
+            border: none; font-family: inherit;
         }
-        [data-theme="dark"] .dropdown-panel { background: rgba(22, 22, 34, 0.98); box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
-        .nav-dropdown.open .dropdown-panel { opacity: 1; visibility: visible; pointer-events: all; transform: translateX(-50%) translateY(0) scale(1); }
-        .dropdown-header { font-size: 0.65rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(0,0,0,0.3); padding: 4px 14px 12px; border-bottom: 1px solid var(--card-border); margin-bottom: 10px; }
+        .nav-dropdown-trigger:hover,
+        .nav-dropdown.open .nav-dropdown-trigger { color: var(--text-dark); background: rgba(0,0,0,0.05); }
+        [data-theme="dark"] .nav-dropdown-trigger:hover,
+        [data-theme="dark"] .nav-dropdown.open .nav-dropdown-trigger { background: rgba(255,255,255,0.07); }
+
+        .dropdown-chevron {
+            width: 14px; height: 14px;
+            transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+            stroke: currentColor; fill: none; stroke-width: 2;
+            stroke-linecap: round; stroke-linejoin: round;
+        }
+        .nav-dropdown.open .dropdown-chevron { transform: rotate(180deg); }
+
+        .dropdown-panel {
+            position: absolute; top: calc(100% + 18px); left: 50%;
+            transform: translateX(-50%) translateY(-10px) scale(0.97);
+            width: 560px;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--card-border);
+            border-radius: 24px; padding: 20px;
+            opacity: 0; visibility: hidden; pointer-events: none;
+            transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.03);
+        }
+        [data-theme="dark"] .dropdown-panel {
+            background: rgba(22,22,34,0.98);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+        .nav-dropdown.open .dropdown-panel {
+            opacity: 1; visibility: visible; pointer-events: all;
+            transform: translateX(-50%) translateY(0) scale(1);
+        }
+
+        .dropdown-header {
+            font-size: 0.65rem; font-weight: 600; letter-spacing: 1.5px;
+            text-transform: uppercase; color: rgba(0,0,0,0.3);
+            padding: 4px 14px 12px;
+            border-bottom: 1px solid var(--card-border); margin-bottom: 10px;
+        }
         [data-theme="dark"] .dropdown-header { color: rgba(255,255,255,0.3); }
+
         .dropdown-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-        .dropdown-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px; border-radius: 14px; text-decoration: none; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid transparent; cursor: pointer; }
-        .dropdown-item:hover { background: rgba(217, 119, 6, 0.04); border-color: rgba(217, 119, 6, 0.15); transform: translateY(-1px); }
-        .dropdown-item:hover .di-icon-wrap { background: rgba(251, 191, 36, 0.15); border-color: rgba(251, 191, 36, 0.4); }
+
+        .dropdown-item {
+            display: flex; align-items: flex-start; gap: 14px;
+            padding: 14px; border-radius: 14px; text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+            border: 1px solid transparent; cursor: pointer;
+        }
+        .dropdown-item:hover {
+            background: rgba(217,119,6,0.04);
+            border-color: rgba(217,119,6,0.15);
+            transform: translateY(-1px);
+        }
+        .dropdown-item:hover .di-icon-wrap { background: rgba(251,191,36,0.15); border-color: rgba(251,191,36,0.4); }
         .dropdown-item:hover .di-icon-wrap svg { stroke: var(--accent); filter: drop-shadow(0 0 6px rgba(217,119,6,0.3)); }
         .dropdown-item:hover .di-title { color: var(--accent); }
-        .di-icon-wrap { flex-shrink: 0; width: 42px; height: 42px; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; display: flex; align-items: center; justify-content: center; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+
+        .di-icon-wrap {
+            flex-shrink: 0; width: 42px; height: 42px;
+            background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 10px; display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+        }
         [data-theme="dark"] .di-icon-wrap { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.08); }
         .di-icon-wrap svg { transition: all 0.3s ease; stroke: rgba(0,0,0,0.45); }
         [data-theme="dark"] .di-icon-wrap svg { stroke: rgba(255,255,255,0.5); }
-        .di-icon-wrap .icon-radar { animation: rotate-slow 8s linear infinite; }
-        .dropdown-item:hover .di-icon-wrap .icon-radar { animation-duration: 2s; }
-        .di-icon-wrap .icon-scan-line { animation: scan-up 2.5s ease-in-out infinite; }
-        .di-icon-wrap .icon-pulse-ring { animation: pulse-ring 2s ease-out infinite; }
-        .di-icon-wrap .icon-blink { animation: blink 1.2s ease-in-out infinite; }
-        @keyframes rotate-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        @keyframes scan-up { 0%, 100% { transform: translateY(4px); opacity: 0.3; } 50% { transform: translateY(-4px); opacity: 1; } }
-        @keyframes pulse-ring { 0% { transform: scale(0.85); opacity: 1; } 100% { transform: scale(1.15); opacity: 0; } }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+
         .di-text { flex: 1; min-width: 0; }
         .di-title { font-size: 0.88rem; font-weight: 600; color: var(--text-dark); margin-bottom: 3px; transition: color 0.3s; }
         .di-desc { font-size: 0.75rem; color: var(--text-dim); line-height: 1.4; }
-        .dropdown-footer { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--card-border); display: flex; align-items: center; justify-content: space-between; padding: 10px 14px 0; }
-        .df-badge { font-size: 0.7rem; color: var(--accent); background: rgba(217,119,6,0.08); border: 1px solid rgba(217,119,6,0.2); padding: 4px 10px; border-radius: 20px; letter-spacing: 0.5px; }
-        .df-link { font-size: 0.75rem; color: var(--text-dim); text-decoration: none; display: flex; align-items: center; gap: 5px; transition: color 0.3s; }
+
+        .dropdown-footer {
+            margin-top: 10px; padding: 10px 14px 0;
+            border-top: 1px solid var(--card-border);
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .df-badge {
+            font-size: 0.7rem; color: var(--accent);
+            background: rgba(217,119,6,0.08);
+            border: 1px solid rgba(217,119,6,0.2);
+            padding: 4px 10px; border-radius: 20px; letter-spacing: 0.5px;
+        }
+        .df-link {
+            font-size: 0.75rem; color: var(--text-dim); text-decoration: none;
+            display: flex; align-items: center; gap: 5px; transition: color 0.3s;
+        }
         .df-link:hover { color: var(--text-dark); }
         .df-link svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; }
 
-        /* BUTTON */
-.btn-client {
-    background: #111;          /* Dark button in light mode */
-    color: #ffffff;
-    padding: 12px 24px;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-left: 10px;
-    transition: 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-}
+        .nav-theme-btn {
+            width: 38px; height: 38px; border-radius: 50%;
+            border: 1px solid var(--card-border);
+            background: transparent; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: 0.3s ease; margin-left: 6px; position: relative; flex-shrink: 0;
+        }
+        .nav-theme-btn:hover { background: rgba(0,0,0,0.06); border-color: var(--accent); }
+        [data-theme="dark"] .nav-theme-btn:hover { background: rgba(255,255,255,0.08); }
+        .nav-theme-btn svg { width: 16px; height: 16px; position: absolute; transition: opacity 0.3s ease, transform 0.4s ease; }
+        .nav-icon-sun { stroke: #d97706; opacity: 1; }
+        .nav-icon-moon { stroke: var(--text-dark); opacity: 0; transform: rotate(-30deg); }
+        [data-theme="dark"] .nav-icon-sun { opacity: 0; transform: rotate(30deg); }
+        [data-theme="dark"] .nav-icon-moon { opacity: 1; transform: rotate(0deg); }
 
-.btn-client:hover {
-    background: var(--accent);
-    transform: translateY(-2px);
-}[data-theme="dark"] .btn-client {
-    background: var(--accent);   /* Gold button in dark mode */
-    color: #111;                 /* Dark text for contrast */
-}
+        .btn-client {
+            background: #111; color: #ffffff;
+            padding: 12px 24px; border-radius: 50px;
+            font-size: 0.85rem; font-weight: 600;
+            margin-left: 10px; transition: 0.3s ease;
+            text-decoration: none; display: inline-block;
+        }
+        .btn-client:hover { background: var(--accent); transform: translateY(-2px); }
+        [data-theme="dark"] .btn-client { background: var(--accent); color: #111; }
+        [data-theme="dark"] .btn-client:hover { background: var(--accent-light); }
 
-[data-theme="dark"] .btn-client:hover {
-    background: var(--accent-light);
-}
-
-        /* HAMBURGER */
-        .hamburger { display: none; cursor: pointer; width: 25px; height: 20px; position: relative; margin-right: 15px; z-index: 1001; }
-        .hamburger span { display: block; position: absolute; height: 2px; width: 100%; background: var(--text-dark); border-radius: 10px; transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .hamburger {
+            display: none; cursor: pointer;
+            width: 25px; height: 20px; position: relative;
+            margin-right: 15px; z-index: 1001;
+        }
+        .hamburger span {
+            display: block; position: absolute; height: 2px; width: 100%;
+            background: var(--text-dark); border-radius: 10px;
+            transition: 0.3s cubic-bezier(0.16,1,0.3,1);
+        }
         .hamburger span:nth-child(1) { top: 0; }
         .hamburger span:nth-child(2) { top: 8px; width: 70%; right: 0; }
         .hamburger span:nth-child(3) { top: 16px; }
@@ -168,424 +249,387 @@
         .hamburger.active span:nth-child(2) { opacity: 0; transform: translateX(20px); }
         .hamburger.active span:nth-child(3) { transform: rotate(-45deg); top: 8px; }
 
-        /* HERO */
+        /* ── HERO ── */
         .hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 20px;
+            height: 70vh;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center; padding: 0 20px;
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(251,191,36,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(251,191,36,0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridShift 20s linear infinite;
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at center, transparent 30%, var(--bg) 80%);
+            pointer-events: none;
+        }
+        @keyframes gridShift { 0% { background-position: 0 0; } 100% { background-position: 60px 60px; } }
 
-    /* Background Image Code */
-    background-image: url('./svg/hero.svg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* Optional: creates a subtle parallax effect */
-}
-.badge {
-    display: inline-block;
-    padding: 8px 18px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    color: var(--text-dim);
-    font-size: 0.75rem;
-    font-weight: 600;
-    border-radius: 50px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    transition: 0.3s ease;
-}
+        .hero-inner {
+            position: relative; z-index: 1;
+            display: flex; flex-direction: column;
+            align-items: center; gap: 28px;
+        }
 
-.badge:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-}        h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 500; line-height: 1.1; letter-spacing: -1px; margin-bottom: 25px; color: var(--text-dark); }
-        .gradient-text { background: linear-gradient( var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 600; }
-        .hero p { color: var(--text-dim); max-width: 650px; margin: 0 auto 45px auto; font-size: clamp(1rem, 2vw, 1.1rem); font-weight: 300; }
+        .badge {
+            display: inline-block; padding: 8px 18px;
+            background: var(--card-bg); border: 1px solid var(--card-border);
+            color: var(--text-dim); font-size: 0.75rem; font-weight: 600;
+            border-radius: 50px; letter-spacing: 1.5px; text-transform: uppercase;
+            transition: 0.3s ease;
+        }
+        .badge:hover { border-color: var(--accent); color: var(--accent); }
 
-/* PLAY BUTTON */
-.play-group {
-    display: inline-flex;
-    align-items: center;
-    gap: 15px;
-    cursor: pointer;
-    padding: 10px 28px 10px 10px;
-    background: rgba(0,0,0,0.04);
-    border: 1px solid var(--card-border);
-    border-radius: 100px;
-    transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
+        h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 500; line-height: 1.1; letter-spacing: -1px; color: var(--text-dark); }
 
-/* Dark mode background */
-[data-theme="dark"] .play-group {
-    background: rgba(255,255,255,0.05);
-}
+        .gradient-text {
+            background: linear-gradient(135deg, var(--accent) 0%, #f59e0b 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; font-weight: 700;
+        }
 
-/* Hover */
-.play-group:hover {
-    background: rgba(0, 0, 0, 0.07);
-    border-color: var(--accent);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-}
+        .hero p { color: var(--text-dim); max-width: 650px; font-size: clamp(1rem, 2vw, 1.1rem); font-weight: 300; }
 
-/* Dark hover */
-[data-theme="dark"] .play-group:hover {
-    background: rgba(255,255,255,0.08);
-}
+        .play-group {
+            display: inline-flex; align-items: center; gap: 15px; cursor: pointer;
+            padding: 10px 28px 10px 10px;
+            background: rgba(0,0,0,0.04); border: 1px solid var(--card-border);
+            border-radius: 100px; transition: 0.4s cubic-bezier(0.16,1,0.3,1);
+        }
+        [data-theme="dark"] .play-group { background: rgba(255,255,255,0.05); }
+        .play-group:hover { background: rgba(0,0,0,0.07); border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+        [data-theme="dark"] .play-group:hover { background: rgba(255,255,255,0.08); }
 
-/* Circle */
-.wave-container {
-    position: relative;
-    width: 48px;
-    height: 48px;
-    background: #111;  /* dark circle in light mode */
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.3s ease;
-}
+        .wave-container {
+            position: relative; width: 48px; height: 48px;
+            background: #111; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            transition: 0.3s ease;
+        }
+        [data-theme="dark"] .wave-container { background: var(--accent); }
+        .play-group:hover .wave-container { transform: scale(1.1); background: var(--accent); }
 
-/* Dark mode circle */
-[data-theme="dark"] .wave-container {
-    background: var(--accent);   /* gold circle in dark mode */
-}
+        .wave-ring {
+            position: absolute; width: 100%; height: 100%;
+            border: 2px solid rgba(0,0,0,0.15); border-radius: 50%;
+            animation: ripple 2.8s infinite; opacity: 0; pointer-events: none;
+        }
+        [data-theme="dark"] .wave-ring { border: 2px solid rgba(255,255,255,0.25); }
+        @keyframes ripple { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(2.5); opacity: 0; } }
 
-/* Icon color */
-.wave-container svg,
-.wave-container i {
-    color: #ffffff;
-}
+        .play-label { font-weight: 600; font-size: 0.85rem; letter-spacing: 0.5px; color: var(--text-dark); }
 
-/* Hover circle */
-.play-group:hover .wave-container {
-    transform: scale(1.1);
-    background: var(--accent);
-}
+        .scroll-indicator {
+            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            z-index: 1; opacity: 0.4; transition: opacity 0.3s;
+        }
+        .scroll-indicator:hover { opacity: 0.8; }
+        .scroll-indicator span { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); }
+        .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--text-dim), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+        @keyframes scrollPulse { 0%,100% { transform: scaleY(1); opacity: 0.4; } 50% { transform: scaleY(1.2); opacity: 1; } }
 
-/* Ripple */
-.wave-ring {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 2px solid rgba(0,0,0,0.15);
-    border-radius: 50%;
-    animation: ripple 2.8s infinite;
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* Dark ripple */
-[data-theme="dark"] .wave-ring {
-    border: 2px solid rgba(255,255,255,0.25);
-}
-
-@keyframes ripple {
-    0% { transform: scale(1); opacity: 0.5; }
-    100% { transform: scale(2.5); opacity: 0; }
-}
-        /* FEATURES */
-        .features { padding: 120px 5%; max-width: 1200px; margin: 0 auto; }
+        /* ── LAYOUT ── */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .section-header { text-align: center; margin-bottom: 80px; }
-        .section-title { font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 20px; color: var(--text-dark); }
-        .feature-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 32px; padding: 40px; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); opacity: 0; transform: translateY(40px); position: relative; overflow: hidden; }
+        .section-title { font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 10px; color: var(--text-dark); }
+        .section-subtitle { color: var(--text-dim); margin: 5px 0 4px; font-size: 1.1rem; line-height: 1.6; }
+
+        /* ── FEATURES ── */
+        .features { padding: 120px 5%; max-width: 1200px; margin: 0 auto; }
+
+        .feature-card {
+            background: var(--card-bg); border: 1px solid var(--card-border);
+            border-radius: 32px; padding: 40px;
+            transition: all 0.6s cubic-bezier(0.16,1,0.3,1);
+            opacity: 0; transform: translateY(40px);
+            position: relative; overflow: hidden;
+        }
         .feature-card.show { opacity: 1; transform: translateY(0); }
-        .feature-card:hover { border-color: rgba(217,119,6,0.3); background: var(--card-bg); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); }
-        .feature-card.bento-full { background: var(--card-bg); border-radius: 20px; padding: 30px; border: 1px solid var(--card-border); opacity: 1; transform: none; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        .feature-card:hover { border-color: rgba(217,119,6,0.3); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+
+        .feature-card.bento-full { border-radius: 20px; padding: 30px; opacity: 1; transform: none; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+
         .card-header-wrapper { display: flex; align-items: center; gap: 15px; margin-bottom: 30px; border-bottom: 1px solid var(--card-border); padding-bottom: 15px; }
         .comparison-main-title { margin: 0; font-size: 1.5rem; color: var(--text-dark); }
+
         .comparison-row { display: flex; gap: 40px; position: relative; }
         .comparison-column { flex: 1; }
         .comparison-divider { width: 1px; background: linear-gradient(to bottom, transparent, var(--card-border), transparent); }
+
         .status-title { font-size: 1.1rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
         .positive .status-title { color: var(--accent); }
         .negative .status-title { color: #ef4444; }
         .status-dot { width: 8px; height: 8px; border-radius: 50%; }
         .positive .status-dot { background: var(--accent); box-shadow: 0 0 10px rgba(217,119,6,0.4); }
         .negative .status-dot { background: #ef4444; box-shadow: 0 0 10px rgba(239,68,68,0.4); }
+
         .comparison-bullets { list-style: none; padding: 0; margin: 0; }
         .comparison-bullets li { color: var(--text-mid); margin-bottom: 12px; font-size: 0.95rem; display: flex; align-items: center; }
         .comparison-bullets li::before { content: "→"; margin-right: 10px; font-weight: bold; }
         .positive .comparison-bullets li::before { color: var(--accent); }
         .negative .comparison-bullets li::before { color: #ef4444; }
-        @media (max-width: 768px) { .comparison-row { flex-direction: column; gap: 30px; } .comparison-divider { height: 1px; width: 100%; } }
 
-        /* CONTAINER & SHARED */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .section-subtitle { color: var(--text-dim); margin: 15px 0 40px 0; font-size: 1.1rem; line-height: 1.6; }
+        .card-icon {
+            display: flex; align-items: center; justify-content: center;
+            width: 60px; height: 60px; border-radius: 16px;
+            background: rgba(217,119,6,0.08); margin-bottom: 20px;
+            transition: transform 0.6s cubic-bezier(0.34,1.56,0.64,1), background 0.3s, border-color 0.3s;
+            border: 1px solid rgba(217,119,6,0.2);
+        }
+        .feature-card:hover .card-icon { transform: rotate(45deg) scale(1.1); background: rgba(217,119,6,0.15); border-color: rgba(217,119,6,0.35); }
+        .feature-card:hover .card-icon svg { transform: rotate(-45deg); color: var(--accent); transition: all 0.6s cubic-bezier(0.34,1.56,0.64,1); }
 
-        /* CAPABILITY LIST */
-        .capability-list { display: flex; flex-direction: column; gap: 25px; perspective: 1000px; }
-        .capability-item { display: flex; gap: 20px; padding: 15px; border-radius: 12px; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); cursor: default; border: 1px solid transparent; align-items: flex-start; }
-        .capability-item:hover { background: rgba(217, 119, 6, 0.04); border-color: rgba(217, 119, 6, 0.12); transform: translateX(10px); }
-        .cap-icon { flex-shrink: 0; width: 44px; height: 44px; background: rgba(217, 119, 6, 0.08); border: 1px solid rgba(217, 119, 6, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--accent); transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); }
-        .capability-item:hover .cap-icon { background: rgba(217, 119, 6, 0.15); color: var(--accent); transform: rotate(-10deg) scale(1.1); box-shadow: 0 0 20px rgba(217, 119, 6, 0.12); }
-        .cap-text h4 { margin: 0 0 4px 0; font-size: 1rem; color: var(--text-dark); transition: color 0.3s ease; }
-        .capability-item:hover .cap-text h4 { color: var(--accent); }
-        .cap-text p { margin: 0; color: var(--text-dim); font-size: 0.9rem; transition: color 0.3s ease; }
-        .capability-item:hover .cap-text p { color: var(--text-mid); }
+        /* ── CAPABILITY LIST ── */
+        .capability-list { display: flex; flex-direction: column; gap: 5px; }
+
+        .capability-item {
+            display: flex; gap: 15px; padding: 15px; border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+            cursor: default; border: 1px solid transparent; align-items: flex-start;
+        }
+        .capability-item:hover { background: rgba(217,119,6,0.04); border-color: rgba(217,119,6,0.12); transform: translateX(10px); }
+
+        .cap-icon {
+            flex-shrink: 0; width: 44px; height: 44px;
+            background: rgba(217,119,6,0.08); border: 1px solid rgba(217,119,6,0.2);
+            border-radius: 10px; display: flex; align-items: center; justify-content: center;
+            color: var(--accent);
+            transition: all 0.5s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        .capability-item:hover .cap-icon { background: rgba(217,119,6,0.15); transform: rotate(-10deg) scale(1.1); box-shadow: 0 0 20px rgba(217,119,6,0.12); }
         .capability-item:hover .cap-icon svg { filter: drop-shadow(0 0 5px rgba(217,119,6,0.3)); }
 
-        /* COMMAND CENTER */
+        .cap-text h4 { margin: 0 0 4px; font-size: 1rem; color: var(--text-dark); transition: color 0.3s; }
+        .capability-item:hover .cap-text h4 { color: var(--accent); }
+        .cap-text p { margin: 0; color: var(--text-dim); font-size: 0.9rem; transition: color 0.3s; }
+        .capability-item:hover .cap-text p { color: var(--text-mid); }
+
+        /* ── SECTION GRIDS ── */
         .command-center { padding: 80px 0; background: var(--bg); transition: background 0.4s; }
-        .command-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .dashboard-mockup { background: #1a1a2e; border: 1px solid #2d2d4e; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 4px 20px rgba(0,0,0,0.1); }
-        .mockup-header { background: #111128; padding: 12px 16px; display: flex; align-items: center; gap: 6px; }
-        .mockup-title { margin-left: auto; font-family: monospace; font-size: 0.65rem; color: #555; }
-        .dot { width: 8px; height: 8px; border-radius: 50%; }
-        .red { background: #ff5f56; } .yellow { background: #ffbd2e; } .green { background: #27c93f; }
-        .mockup-screen { height: 300px; position: relative; background: #080810; overflow: hidden; }
-        .radar-sweep { position: absolute; width: 200%; height: 200%; top: -50%; left: -50%; background: conic-gradient(from 0deg, transparent 70%, rgba(251, 191, 36, 0.08) 100%); animation: sweep 5s linear infinite; }
-        .grid-overlay { position: absolute; inset: 0; background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px); background-size: 30px 30px; }
-        .live-ui div[class^="corner-"] { position: absolute; width: 15px; height: 15px; border: 1px solid rgba(255, 255, 255, 0.2); }
-        .corner-tl { top: 15px; left: 15px; border-right: 0; border-bottom: 0; }
-        .corner-tr { top: 15px; right: 15px; border-left: 0; border-bottom: 0; }
-        .corner-bl { bottom: 15px; left: 15px; border-right: 0; border-top: 0; }
-        .corner-br { bottom: 15px; right: 15px; border-left: 0; border-top: 0; }
-        .status-bar { position: absolute; top: 20px; left: 40px; font-family: monospace; font-size: 0.7rem; display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.7); }
-        .rec-dot { width: 6px; height: 6px; background: #ff4d4d; border-radius: 50%; animation: blink 1s infinite; }
-        .camera-id { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); font-family: monospace; font-size: 0.6rem; color: rgba(255, 255, 255, 0.3); letter-spacing: 1px; }
-        @keyframes sweep { to { transform: rotate(360deg); } }
-        @media (max-width: 992px) { .command-grid { grid-template-columns: 1fr; text-align: center; } .capability-item { justify-content: center; text-align: left; } .command-visual { order: 2; max-width: 600px; margin: 0 auto; width: 100%; } }
+        .command-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
 
-        /* VIRTUAL PATROL */
         .virtual-patrol { padding: 100px 0; background: var(--section-alt-bg); transition: background 0.4s; }
-        .patrol-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-        .patrol-subtitle { color: var(--text-dark); margin-bottom: 10px; font-size: 1.3rem; }
-        .patrol-monitor { background: #1a1a2e; border: 1px solid #2d2d4e; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12); }
-        .monitor-header { background: #111128; padding: 15px 20px; display: flex; justify-content: space-between; font-family: monospace; font-size: 0.75rem; color: rgba(255,255,255,0.6); }
-        .status-indicator { display: flex; align-items: center; gap: 8px; color: #fbbf24; }
-        .pulse-dot { width: 8px; height: 8px; background: #fbbf24; border-radius: 50%; animation: blink 1s infinite; }
-        .monitor-feed { height: 350px; background: #050510; position: relative; overflow: hidden; }
-        .scan-line { position: absolute; width: 100%; height: 2px; background: rgba(251, 191, 36, 0.4); top: 0; animation: scan 4s linear infinite; box-shadow: 0 0 15px rgba(251,191,36,0.6); }
-        .patrol-status-badge { position: absolute; bottom: 20px; right: 20px; background: rgba(39, 201, 63, 0.1); color: #27c93f; padding: 6px 12px; border-radius: 4px; font-size: 0.65rem; font-weight: bold; border: 1px solid rgba(39, 201, 63, 0.3); }
-        .overlay-text { position: absolute; top: 20px; left: 20px; color: rgba(255, 255, 255, 0.4); font-family: monospace; font-size: 0.7rem; }
-        .monitor-footer { padding: 12px 20px; background: #111128; display: flex; gap: 20px; font-family: monospace; font-size: 0.7rem; color: rgba(255,255,255,0.5); }
-        @keyframes scan { to { top: 100%; } }
-        @media (max-width: 992px) { .patrol-grid { grid-template-columns: 1fr; gap: 50px; } .patrol-visual { order: 2; } }
+        .patrol-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
 
-        /* SMART SURVEILLANCE */
         .smart-surveillance { padding: 100px 0; background: var(--bg); transition: background 0.4s; }
-        .surveillance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .surveillance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+
+        #access-management { background: var(--section-alt-bg); transition: background 0.4s; padding: 100px 0; }
+        .ac-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; max-width: 1200px; margin: 0 auto; }
+
+
+
+.section-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section-visual img {
+            width: 100%;
+            max-width: 560px;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+        } 
+
+        /* ── SVG ANIMATION CONTAINERS ── 
+.section-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 600px; /* ← adjust this value 
+}
+
+.section-visual img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 20px;
+    object-fit: cover; /* fills the height without distortion 
+}
+
+/* If using inline SVG or <object> tag 
+.section-visual svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+*/
+        /* ── DESKTOP ORDER (default) ── */
+        /* Command Center: intro(left-top) + caps(left-bottom) | visual(right) */
+        .command-intro   { order: 1; }
+        .command-visual  { order: 2; grid-row: 1 / 3; align-self: center; }
+        .command-caps    { order: 3; }
+
+        /* Virtual Patrol: visual(left) | intro(right-top) + caps(right-bottom) */
+        .patrol-visual   { order: 1; grid-row: 1 / 3; align-self: center; }
+        .patrol-intro    { order: 2; }
+        .patrol-caps     { order: 4; }
+
+        /* Smart Surveillance: intro(left-top) + caps(left-bottom) | visual(right) */
+        .surveillance-intro  { order: 1; }
+        .surveillance-visual { order: 2; grid-row: 1 / 3; align-self: center; }
+        .surveillance-caps   { order: 3; }
+
+        /* Access Control: visual(left) | intro(right-top) + caps(right-bottom) */
+        .ac-visual-wrapper { order: 1; grid-row: 1 / 3; align-self: center; }
+        .ac-intro          { order: 2; }
+        .ac-caps           { order: 4; }
+
+        /* Desktop: command and surveillance grids need 2 cols + caps spanning */
+        .command-grid,
+        .surveillance-grid {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+        }
+        .command-intro,
+        .command-caps,
+        .surveillance-intro,
+        .surveillance-caps {
+            grid-column: 1;
+        }
+        .command-visual,
+        .surveillance-visual {
+            grid-column: 2;
+        }
+
+        .patrol-grid,
+        .ac-grid {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+        }
+        .patrol-intro,
+        .patrol-caps,
+        .ac-intro,
+        .ac-caps {
+            grid-column: 2;
+        }
+        .patrol-visual,
+        .ac-visual-wrapper {
+            grid-column: 1;
+        }
+
+        .patrol-subtitle { color: var(--text-dark); margin-bottom: 10px; font-size: 1.3rem; }
         .surveillance-subtitle { color: var(--text-dark); margin-bottom: 20px; font-size: 1.5rem; font-weight: 600; }
-        .ai-monitor { position: relative; height: 450px; background-color: #111128; border: 2px solid #2d2d4e; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12); }
-        .detection-container { position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); width: 200px; height: 150px; display: flex; align-items: center; justify-content: center; }
-        .car-svg { width: 100px; color: #ff4444; filter: drop-shadow(0 0 10px rgba(255, 68, 68, 0.8)); z-index: 2; }
-        .bounding-box { position: absolute; width: 140px; height: 100px; border: 2px solid #ff4444; box-shadow: 0 0 15px rgba(255, 68, 68, 0.3); }
-        .detection-label { position: absolute; top: -30px; background: #ff4444; color: white; font-family: monospace; font-size: 0.7rem; padding: 2px 8px; font-weight: bold; white-space: nowrap; }
-        .radar-ring { position: absolute; width: 180px; height: 180px; border: 1px solid rgba(255, 68, 68, 0.5); border-radius: 50%; animation: radar-pulse 2s infinite; }
-        @keyframes radar-pulse { 0% { transform: scale(0.8); opacity: 1; } 100% { transform: scale(1.4); opacity: 0; } }
-        .search-overlay { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); width: 80%; }
-        .search-bar { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); padding: 12px 20px; border-radius: 50px; color: #fff; font-family: monospace; font-size: 0.8rem; text-align: center; border-left: 3px solid #fbbf24; }
-        @media (max-width: 992px) { .surveillance-grid { grid-template-columns: 1fr; } .surveillance-visual { order: 2; } }
 
-        /* ACCESS CONTROL */
-        .ac-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; max-width: 1200px; margin: 0 auto; }
-        .ac-monitor-frame { background: #111128; border: 1px solid rgba(217, 119, 6, 0.25); border-radius: 12px; position: relative; overflow: hidden; height: 400px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12); }
-        .ac-ui-header { padding: 15px; display: flex; justify-content: space-between; background: rgba(217, 119, 6, 0.1); border-bottom: 1px solid rgba(217, 119, 6, 0.15); }
-        .ac-status-label, .ac-timer { color: #fbbf24; font-family: 'Courier New', monospace; font-size: 11px; }
-        .ac-status-dot { display: inline-block; width: 8px; height: 8px; background: #fbbf24; border-radius: 50%; margin-right: 5px; animation: ac-pulse 1.5s infinite; }
-        .ac-beam-line { position: absolute; width: 100%; height: 100px; background: linear-gradient(to bottom, transparent, rgba(217, 119, 6, 0.06), transparent); animation: ac-sweep 4s linear infinite; z-index: 1; }
-        .ac-target-box { position: relative; width: 120px; height: 120px; margin: 40px auto; border: 1px solid rgba(217, 119, 6, 0.15); display: flex; align-items: center; justify-content: center; }
-        .ac-corner-brackets { position: absolute; inset: -5px; }
-        .ac-corner-brackets::before { content: ''; position: absolute; top: 0; left: 0; width: 15px; height: 15px; border-top: 2px solid #fbbf24; border-left: 2px solid #fbbf24; }
-        .ac-reticle-bar { position: absolute; width: 100%; height: 2px; background: #fbbf24; box-shadow: 0 0 10px #fbbf24; animation: ac-scan-bar 3s ease-in-out infinite; }
-        .ac-svg-icon { width: 40px; stroke: #fbbf24; }
-        .ac-log-stack { padding: 20px; }
-        .ac-entry { background: rgba(217, 119, 6, 0.06); border-left: 3px solid #d97706; margin-bottom: 8px; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; }
-        .ac-meta-label { font-size: 10px; color: #fbbf24; display: block; }
-        .ac-meta-val { font-size: 12px; color: white; font-weight: 500; }
-        .ac-tag-approved { background: #d97706; color: white; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 3px; }
-        .ac-footer-info { font-family: monospace; font-size: 11px; color: rgba(251, 191, 36, 0.5); padding: 10px 20px; text-align: center; }
-        .ac-live-box { display: flex; align-items: center; }
-        @keyframes ac-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.2); } }
-        @keyframes ac-sweep { from { top: -100px; } to { top: 100%; } }
-        @keyframes ac-scan-bar { 0%, 100% { top: 0; } 50% { top: 100%; } }
-        @media (max-width: 900px) { .ac-grid { grid-template-columns: 1fr; gap: 40px; } .ac-visual-wrapper { order: 2; } .surveillance-content { order: 1; text-align: center; } }
-        #access-management { background: var(--bg); transition: background 0.4s; }
+        .cta-button.pill {
+            display: inline-flex; align-items: center; gap: 15px;
+            background: var(--text-dark); color: #fff;
+            padding: 12px 12px 12px 28px; border-radius: 100px;
+            font-weight: 700; text-decoration: none; font-size: 0.95rem;
+            transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .arrow-circle {
+            width: 40px; height: 40px; background: rgba(255,255,255,0.15);
+            color: #fff; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+        }
+        .cta-button.pill:hover { transform: translateY(-3px) scale(1.02); background: var(--accent); box-shadow: 0 15px 30px rgba(217,119,6,0.2); }
+        .cta-button.pill:hover .arrow-circle { transform: translateX(3px); background: rgba(255,255,255,0.2); }
 
-        /* PRICING */
-        .pricing-section { padding: 120px 0; background: var(--pricing-bg); transition: background 0.4s; }
-        .center { text-align: center; }
-        .pricing-grid { margin-top: 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
-        .pricing-card { background: var(--card-bg); border-radius: 24px; padding: 50px 40px; border: 1px solid var(--card-border); position: relative; transition: 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.04); }
-        .pricing-card:hover { transform: translateY(-8px); border-color: rgba(217, 119, 6, 0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-        .plan-label { font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 20px; }
-        .plan-price { font-size: 3rem; font-weight: 700; margin-bottom: 10px; color: var(--text-dark); }
-        .plan-price span { font-size: 1rem; color: var(--text-dim); font-weight: 400; }
-        .plan-desc { font-size: 0.95rem; margin-bottom: 30px; color: var(--text-dim); }
-        .plan-features { list-style: none; margin-bottom: 40px; display: flex; flex-direction: column; gap: 14px; font-size: 0.95rem; color: var(--text-mid); }
-        .plan-features li { padding-left: 20px; position: relative; }
-        .plan-features li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
-        .plan-btn { width: 100%; padding: 14px; border-radius: 50px; border: 1px solid var(--card-border); background: transparent; color: var(--text-dark); cursor: pointer; transition: 0.3s ease; font-size: 0.95rem; font-weight: 600; }
-        .plan-btn:hover { background: rgba(0,0,0,0.04); border-color: #9ca3af; }
-        [data-theme="dark"] .plan-btn:hover { background: rgba(255,255,255,0.06); }
-        .plan-btn.primary { background: var(--text-dark); color: #fff; border: none; }
-        .plan-btn.primary:hover { background: var(--accent); }
-        .featured { border: 1px solid rgba(217, 119, 6, 0.3); box-shadow: 0 20px 60px rgba(217, 119, 6, 0.1); }
-        .popular-badge { position: absolute; top: -14px; right: 30px; background: var(--accent); color: #fff; padding: 6px 14px; font-size: 0.7rem; border-radius: 20px; font-weight: 600; }
-        .pricing-note { margin-top: 60px; text-align: center; font-size: 0.9rem; color: var(--text-dim); line-height: 1.7; }
-        @media (max-width: 992px) { .pricing-grid { grid-template-columns: 1fr; } }
+/* ── PRICING ── */
+.pricing-section { padding: 120px 0; background: var(--pricing-bg); transition: background 0.4s; }
+.center { text-align: center; }
+.pricing-grid { margin-top: 80px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; align-items: stretch; }
 
-        /* ENTERPRISE */
-        .enterprise-section { padding: 120px 0; background: var(--enterprise-bg); transition: background 0.4s; }
+.pricing-card {
+    background: var(--card-bg); border-radius: 24px; padding: 50px 40px;
+    border: 1px solid var(--card-border); position: relative;
+    transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+}
+.pricing-card:hover { transform: translateY(-10px); border-color: rgba(217,119,6,0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+
+.featured { border: 1px solid rgba(217,119,6,0.4); box-shadow: 0 20px 60px rgba(217,119,6,0.1); }
+.popular-badge { position: absolute; top: -14px; right: 30px; background: var(--accent); color: #fff; padding: 6px 14px; font-size: 0.7rem; border-radius: 20px; font-weight: 600; }
+
+.plan-label { font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 20px; }
+.plan-price { font-size: 3rem; font-weight: 700; margin-bottom: 10px; color: var(--text-dark); }
+.plan-price span { font-size: 1rem; color: var(--text-dim); font-weight: 400; }
+.plan-desc { font-size: 0.95rem; margin-bottom: 30px; color: var(--text-dim); }
+
+.plan-features { list-style: none; margin-bottom: 40px; display: flex; flex-direction: column; gap: 14px; font-size: 0.95rem; color: var(--text-mid); flex: 1; }
+.plan-features li { padding-left: 20px; position: relative; }
+.plan-features li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+
+.plan-btn { width: 100%; padding: 14px; border-radius: 50px; border: 1px solid var(--card-border); background: transparent; color: var(--text-dark); cursor: pointer; transition: all 0.3s ease; font-size: 0.95rem; font-weight: 600; margin-top: auto; }
+.plan-btn:hover { background: rgba(0,0,0,0.04); border-color: var(--accent); }
+[data-theme="dark"] .plan-btn:hover { background: rgba(255,255,255,0.06); }
+.plan-btn.primary { background: var(--text-dark); color: #fff; border: none; }
+.plan-btn.primary:hover { background: var(--accent); }
+[data-theme="dark"] .plan-btn.primary { background: var(--accent); color: #fff; }
+[data-theme="dark"] .plan-btn.primary:hover { background: var(--accent-light); }
+
+.pricing-note { margin-top: 60px; text-align: center; font-size: 0.9rem; color: var(--text-dim); line-height: 1.7; }
+
+        /* ── ENTERPRISE ── */
+        .enterprise-section { padding: 50px 0; background: var(--enterprise-bg); transition: background 0.4s; }
         .enterprise-grid { display: flex; flex-direction: column; gap: 80px; max-width: 900px; margin: 0 auto; }
         .enterprise-content { background: var(--card-bg); padding: 60px 50px; border-radius: 24px; border: 1px solid var(--card-border); transition: 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.04); }
-        .enterprise-content:hover { transform: translateY(-6px); border-color: rgba(217, 119, 6, 0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+        .enterprise-content:hover { transform: translateY(-6px); border-color: rgba(217,119,6,0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
         .enterprise-list { list-style: none; margin-top: 30px; display: flex; flex-direction: column; gap: 18px; font-size: 0.95rem; color: var(--text-mid); }
         .enterprise-list li { position: relative; padding-left: 24px; }
         .enterprise-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent); font-size: 1.2rem; }
-        .small-note { display: block; font-size: 0.8rem; color: var(--text-dim); margin-top: 6px; }
-        .badge.secondary { background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.2); color: #3b82f6; }
 
-        /* =============================================
-           FOOTER WITH THEME TOGGLE
-        ============================================= */
-        .footer {
-            width: 100%;
-            background: var(--footer-bg);
-            color: var(--footer-text);
-            padding: 60px 80px 0;
-            border-top: 1px solid var(--card-border);
-            transition: background 0.4s, color 0.4s;
-        }
+        /* ── FOOTER ── */
+        .footer { width: 100%; background: var(--footer-bg); color: var(--footer-text); padding: 60px 80px 0; border-top: 1px solid var(--card-border); transition: background 0.4s, color 0.4s; }
         .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
         .footer-column { flex: 1; min-width: 200px; }
         .footer-column h2, .footer-column h3 { color: #fff; margin-bottom: 15px; }
-        [data-theme="dark"] .footer-column h2,
-        [data-theme="dark"] .footer-column h3 { color: var(--text-dark); }
+        [data-theme="dark"] .footer-column h2, [data-theme="dark"] .footer-column h3 { color: var(--text-dark); }
         .footer-column ul { list-style: none; padding: 0; }
         .footer-column ul li { margin-bottom: 10px; cursor: pointer; color: #9ca3af; }
         .footer-column ul li:hover { color: var(--accent-light); }
 
-        /* THEME TOGGLE BAR */
-        .footer-theme-bar {
-            margin-top: 40px;
-            padding: 24px 0;
-            border-top: 1px solid var(--footer-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-        }
-
-        .theme-label {
-            font-size: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            color: #6b7280;
-            transition: color 0.3s;
-            user-select: none;
-        }
-
+        .footer-theme-bar { margin-top: 40px; padding: 24px 0; border-top: 1px solid var(--footer-border); display: flex; align-items: center; justify-content: center; gap: 16px; }
+        .theme-label { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.5px; color: #6b7280; transition: color 0.3s; user-select: none; }
         .theme-label.active-label { color: var(--accent); }
 
-        /* THE TOGGLE PILL */
-        .theme-toggle-pill {
-            position: relative;
-            width: 72px;
-            height: 36px;
-            background: #1f2937;
-            border: 1px solid #374151;
-            border-radius: 100px;
-            cursor: pointer;
-            transition: background 0.4s ease, border-color 0.4s ease;
-            flex-shrink: 0;
-            outline: none;
-        }
+        .theme-toggle-pill { position: relative; width: 72px; height: 36px; background: #1f2937; border: 1px solid #374151; border-radius: 100px; cursor: pointer; transition: background 0.4s ease, border-color 0.4s ease; flex-shrink: 0; outline: none; }
+        [data-theme="dark"] .theme-toggle-pill { background: rgba(217,119,6,0.12); border-color: rgba(217,119,6,0.3); }
+        .theme-toggle-pill:focus-visible { box-shadow: 0 0 0 3px rgba(251,191,36,0.35); }
 
-        [data-theme="dark"] .theme-toggle-pill {
-            background: rgba(217, 119, 6, 0.12);
-            border-color: rgba(217, 119, 6, 0.3);
-        }
+        .toggle-knob { position: absolute; top: 3px; left: 3px; width: 28px; height: 28px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), background 0.4s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+        [data-theme="dark"] .toggle-knob { transform: translateX(36px); background: var(--accent); }
 
-        .theme-toggle-pill:focus-visible {
-            box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.35);
-        }
-
-        /* The sliding knob */
-        .toggle-knob {
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 28px;
-            height: 28px;
-            background: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.4s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
-
-        [data-theme="dark"] .toggle-knob {
-            transform: translateX(36px);
-            background: var(--accent);
-        }
-
-        .toggle-knob svg {
-            width: 14px;
-            height: 14px;
-            transition: opacity 0.3s ease, transform 0.4s ease;
-            position: absolute;
-        }
-
-        .icon-sun {
-            stroke: #d97706;
-            fill: none;
-            stroke-width: 2;
-            stroke-linecap: round;
-            opacity: 1;
-        }
-
-        .icon-moon {
-            stroke: #fff;
-            fill: none;
-            stroke-width: 2;
-            stroke-linecap: round;
-            opacity: 0;
-            transform: rotate(-30deg);
-        }
-
+        .toggle-knob svg { width: 14px; height: 14px; transition: opacity 0.3s ease, transform 0.4s ease; position: absolute; }
+        .icon-sun { stroke: #d97706; fill: none; stroke-width: 2; stroke-linecap: round; opacity: 1; }
+        .icon-moon { stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; opacity: 0; transform: rotate(-30deg); }
         [data-theme="dark"] .icon-sun { opacity: 0; transform: rotate(30deg); }
         [data-theme="dark"] .icon-moon { opacity: 1; transform: rotate(0deg); }
+        .theme-toggle-pill:hover .toggle-knob { box-shadow: 0 0 0 4px rgba(251,191,36,0.15), 0 2px 8px rgba(0,0,0,0.3); }
 
-        /* Glow ring on hover */
-        .theme-toggle-pill:hover .toggle-knob {
-            box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.15), 0 2px 8px rgba(0,0,0,0.3);
-        }
+        .footer-bottom { border-top: 1px solid var(--footer-border); padding: 20px 0; text-align: center; font-size: 14px; color: #6b7280; transition: border-color 0.4s; }
 
-        /* FOOTER BOTTOM */
-        .footer-bottom {
-            border-top: 1px solid var(--footer-border);
-            padding: 20px 0;
-            text-align: center;
-            font-size: 14px;
-            color: #6b7280;
-            transition: border-color 0.4s;
-        }
-
-        /* CTA */
-        .command-cta { margin-top: 40px; margin-bottom: 20px; }
-        .cta-button.pill { display: inline-flex; align-items: center; gap: 15px; background: var(--text-dark); color: #fff; padding: 12px 12px 12px 28px; border-radius: 100px; font-weight: 700; text-decoration: none; font-size: 0.95rem; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
-        .arrow-circle { width: 40px; height: 40px; background: rgba(255,255,255,0.15); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); }
-        .cta-button.pill:hover { transform: translateY(-3px) scale(1.02); background: var(--accent); box-shadow: 0 15px 30px rgba(217, 119, 6, 0.2); }
-        .cta-button.pill:hover .arrow-circle { transform: translateX(3px); background: rgba(255,255,255,0.2); }
-
-        /* CARD ICON */
-        .card-icon { display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 16px; background: rgba(217, 119, 6, 0.08); margin-bottom: 20px; transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease, border-color 0.3s ease; border: 1px solid rgba(217, 119, 6, 0.2); }
-        .feature-card:hover .card-icon { transform: rotate(45deg) scale(1.1); background: rgba(217, 119, 6, 0.15); border-color: rgba(217, 119, 6, 0.35); }
-        .feature-card:hover .card-icon svg { transform: rotate(-45deg); color: var(--accent); transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
-
-        /* MOBILE NAV */
+        /* ── RESPONSIVE ── */
         @media (max-width: 900px) {
             .hamburger { display: block; }
-            .nav-menu { display: flex; position: absolute; top: 80px; left: 50%; transform: translateX(-50%) translateY(-20px) scale(0.95); width: 90%; background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); border: 1px solid var(--card-border); border-radius: 24px; padding: 30px; flex-direction: column; gap: 20px; opacity: 0; visibility: hidden; transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+            .nav-menu {
+                display: flex; position: absolute; top: 80px; left: 50%;
+                transform: translateX(-50%) translateY(-20px) scale(0.95);
+                width: 90%; background: rgba(255,255,255,0.97);
+                backdrop-filter: blur(20px); border: 1px solid var(--card-border);
+                border-radius: 24px; padding: 30px; flex-direction: column; gap: 20px;
+                opacity: 0; visibility: hidden;
+                transition: 0.4s cubic-bezier(0.16,1,0.3,1);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            }
             [data-theme="dark"] .nav-menu { background: rgba(13,13,20,0.97); }
             .nav-menu.active { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0) scale(1); }
             .nav-links { flex-direction: column; width: 100%; text-align: center; }
@@ -594,6 +638,52 @@
             .dropdown-panel { position: static; transform: none !important; width: 100%; opacity: 1 !important; visibility: visible !important; display: none; box-shadow: none; border-radius: 14px; margin-top: 10px; }
             .nav-dropdown.open .dropdown-panel { display: block; }
             .btn-client { margin-left: 0; width: 100%; text-align: center; }
+
+            /* ── MOBILE: All grids become single column flex ── */
+            .command-grid,
+            .patrol-grid,
+            .surveillance-grid,
+            .ac-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 32px;
+            }
+
+            /* Reset all grid-column assignments for mobile */
+            .command-intro, .command-visual, .command-caps,
+            .patrol-intro, .patrol-visual, .patrol-caps,
+            .surveillance-intro, .surveillance-visual, .surveillance-caps,
+            .ac-intro, .ac-visual-wrapper, .ac-caps {
+                grid-column: unset;
+                grid-row: unset;
+            }
+
+            /* ── MOBILE ORDER: Heading → Description → SVG → Capabilities ── */
+            /* Command Center */
+            .command-intro   { order: 1; }
+            .command-visual  { order: 2; }
+            .command-caps    { order: 3; }
+
+            /* Virtual Patrol */
+            .patrol-intro    { order: 1; }
+            .patrol-visual   { order: 2; }
+            .patrol-caps     { order: 3; }
+
+            /* Smart Surveillance */
+            .surveillance-intro  { order: 1; }
+            .surveillance-visual { order: 2; }
+            .surveillance-caps   { order: 3; }
+
+            /* Access Control */
+            .ac-intro          { order: 1; }
+            .ac-visual-wrapper { order: 2; }
+            .ac-caps           { order: 3; }
+
+            .section-visual img { max-width: 100%; border-radius: 16px; }
+
+            .pricing-grid { grid-template-columns: 1fr; }
+            .comparison-row { flex-direction: column; gap: 30px; }
+            .comparison-divider { height: 1px; width: 100%; }
             .footer { padding: 60px 30px 0; }
         }
     </style>
@@ -601,14 +691,18 @@
 <body>
     <div class="bg-glow"></div>
 
-    <!-- NAVIGATION -->
+    <!-- NAV -->
     <div class="nav-wrapper" id="navbar">
         <nav class="pill-nav">
             <a href="#" class="logo">
-                <img src="./images/watchtower.png" alt="Logo" class="brand-img">
+                <img src="images/watchtower.png" alt="WatchTower Logo" class="brand-img">
                 WatchTower
             </a>
-            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+
             <div class="nav-menu" id="nav-menu">
                 <div class="nav-links">
                     <div class="nav-dropdown" id="productsDropdown">
@@ -622,63 +716,104 @@
                                 <a href="#command-center" class="dropdown-item">
                                     <div class="di-icon-wrap">
                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                            <circle cx="12" cy="12" r="9" stroke="currentColor" opacity="0.3"/><circle cx="12" cy="12" r="5" stroke="currentColor" opacity="0.5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><line x1="12" y1="12" x2="12" y2="3" stroke="currentColor" class="icon-radar" style="transform-origin: 12px 12px;"/><circle cx="12" cy="3" r="1" fill="currentColor" class="icon-radar" style="transform-origin: 12px 12px;"/>
+                                            <circle cx="12" cy="12" r="9" stroke="currentColor" opacity="0.3"/>
+                                            <circle cx="12" cy="12" r="5" stroke="currentColor" opacity="0.5"/>
+                                            <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+                                            <line x1="12" y1="12" x2="12" y2="3" stroke="currentColor"/>
+                                            <circle cx="12" cy="3" r="1" fill="currentColor"/>
                                         </svg>
                                     </div>
-                                    <div class="di-text"><div class="di-title">Command Center</div><div class="di-desc">Unified dashboard for total site oversight</div></div>
+                                    <div class="di-text">
+                                        <div class="di-title">Command Center</div>
+                                        <div class="di-desc">Unified dashboard for total site oversight</div>
+                                    </div>
                                 </a>
                                 <a href="#virtual-patrol" class="dropdown-item">
                                     <div class="di-icon-wrap">
                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" class="icon-scan-line"/>
+                                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor"/>
+                                            <line x1="8" y1="12" x2="16" y2="12" stroke="currentColor"/>
                                         </svg>
                                     </div>
-                                    <div class="di-text"><div class="di-title">Virtual Patrol</div><div class="di-desc">AI-powered automated surveillance rounds</div></div>
+                                    <div class="di-text">
+                                        <div class="di-title">Virtual Patrol</div>
+                                        <div class="di-desc">AI-powered automated surveillance rounds</div>
+                                    </div>
                                 </a>
                                 <a href="#smart-surveillance" class="dropdown-item">
                                     <div class="di-icon-wrap">
                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor"/><circle cx="12" cy="12" r="3.5" stroke="currentColor" class="icon-pulse-ring" style="transform-origin: 12px 12px;"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor"/>
+                                            <circle cx="12" cy="12" r="3.5" stroke="currentColor"/>
+                                            <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
                                         </svg>
                                     </div>
-                                    <div class="di-text"><div class="di-title">Smart Surveillance</div><div class="di-desc">Detect anomalies before they become threats</div></div>
+                                    <div class="di-text">
+                                        <div class="di-title">Smart Surveillance</div>
+                                        <div class="di-desc">Detect anomalies before they become threats</div>
+                                    </div>
                                 </a>
                                 <a href="#access-management" class="dropdown-item">
                                     <div class="di-icon-wrap">
                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                            <circle cx="12" cy="8" r="4" stroke="currentColor"/><path d="M6 20v-1a6 6 0 0 1 12 0v1" stroke="currentColor"/><line x1="8" y1="8" x2="16" y2="8" stroke="currentColor" class="icon-scan-line" style="animation-delay: 0.5s;"/>
+                                            <circle cx="12" cy="8" r="4" stroke="currentColor"/>
+                                            <path d="M6 20v-1a6 6 0 0 1 12 0v1" stroke="currentColor"/>
                                         </svg>
                                     </div>
-                                    <div class="di-text"><div class="di-title">Access Control</div><div class="di-desc">Facial recognition & LPR gate management</div></div>
+                                    <div class="di-text">
+                                        <div class="di-title">Access Control</div>
+                                        <div class="di-desc">Facial recognition & LPR gate management</div>
+                                    </div>
                                 </a>
                             </div>
                             <div class="dropdown-footer">
                                 <span class="df-badge">✦ Free Tier Available</span>
-                                <a href="#pricing" class="df-link">View Pricing <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                                <a href="#pricing" class="df-link">
+                                    View Pricing
+                                    <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                </a>
                             </div>
                         </div>
                     </div>
                     <a href="#features">Features</a>
                     <a href="#pricing">Pricing</a>
                 </div>
-                <a href="#" class="btn-client">Client Portal</a>
+                <button class="nav-theme-btn" id="navThemeToggle" aria-label="Toggle theme">
+                    <svg class="nav-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <svg class="nav-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+                <a href="https://wa.me/6580585077?text=Hello%20WatchTower%20Team,%20I%20would%20like%20to%20enquire%20about%20your%20services." class="btn-client">Contact Sales</a>
             </div>
         </nav>
     </div>
 
     <!-- HERO -->
     <section class="hero">
-        <div class="badge">Next-Gen AI Surveillance</div>
-        <h1>Smart Security <br><span class="gradient-text">Operations.</span></h1>
-        <p>WatchTower is an AI-powered operations platform that uses automation to monitor sites, conduct virtual patrols, and maintain audit-ready records.</p>
-        <div class="play-group">
-            <div class="wave-container">
-                <div class="wave-ring"></div>
-                <div class="wave-ring" style="animation-delay: 0.8s;"></div>
-                <div class="wave-ring" style="animation-delay: 1.6s;"></div>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+        <div class="hero-inner">
+            <div class="badge">Next-Gen AI Surveillance</div>
+            <h1>Smart Security<br><span class="gradient-text">Operations.</span></h1>
+            <p>WatchTower is an AI-powered operations platform that uses automation to monitor sites, conduct virtual patrols, and maintain audit-ready records.</p>
+            <div class="play-group" id="heroPlay">
+                <div class="wave-container">
+                    <div class="wave-ring"></div>
+                    <div class="wave-ring" style="animation-delay: 0.8s;"></div>
+                    <div class="wave-ring" style="animation-delay: 1.6s;"></div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <span class="play-label">VIEW SYSTEM IN ACTION</span>
             </div>
-            <span style="font-weight: 600; font-size: 0.85rem; letter-spacing: 0.5px; color: var(--text-dark);">VIEW SYSTEM IN ACTION</span>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
         </div>
     </section>
 
@@ -687,12 +822,17 @@
         <div class="section-header">
             <div class="badge" style="margin-bottom: 10px;">The WatchTower Advantage</div>
             <h2 class="section-title">Better Security, <span class="gradient-text">Less Stress.</span></h2>
-            <p style="color: var(--text-dim); max-width: 700px; margin: 0 auto;">Our AI handles the fatigue-heavy task of constant monitoring, allowing your team to focus on high-stakes response.</p>
+            <p style="color: var(--text-dim); max-width: 700px; margin: 0 auto;">
+                Our AI handles the fatigue-heavy task of constant monitoring, allowing your team to focus on high-stakes response.
+            </p>
         </div>
         <div class="feature-card bento-full">
             <div class="card-header-wrapper">
                 <div class="card-icon">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 11 11 13 15 9"/></svg>
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <polyline points="9 11 11 13 15 9"/>
+                    </svg>
                 </div>
                 <h2 class="comparison-main-title">Operational Efficiency</h2>
             </div>
@@ -700,14 +840,20 @@
                 <div class="comparison-column positive">
                     <h3 class="status-title"><span class="status-dot"></span> With WatchTower</h3>
                     <ul class="comparison-bullets">
-                        <li>AI supports guards 24/7</li><li>Wider coverage, less strain</li><li>Instant SOP-aligned alerts</li><li>Audit-ready digital logs</li>
+                        <li>AI supports guards 24/7</li>
+                        <li>Wider coverage, less strain</li>
+                        <li>Instant SOP-aligned alerts</li>
+                        <li>Audit-ready digital logs</li>
                     </ul>
                 </div>
                 <div class="comparison-divider"></div>
                 <div class="comparison-column negative">
                     <h3 class="status-title"><span class="status-dot"></span> Without WatchTower</h3>
                     <ul class="comparison-bullets">
-                        <li>Constant manual monitoring</li><li>Risk of fatigue-led misses</li><li>Limited perimeter visibility</li><li>Fragmented paper logs</li>
+                        <li>Constant manual monitoring</li>
+                        <li>Risk of fatigue-led misses</li>
+                        <li>Limited perimeter visibility</li>
+                        <li>Fragmented paper logs</li>
                     </ul>
                 </div>
             </div>
@@ -717,26 +863,77 @@
     <!-- COMMAND CENTER -->
     <section class="command-center" id="command-center">
         <div class="container">
+            <!-- Desktop: 2-col grid. Mobile: flex column with order control -->
             <div class="command-grid">
-                <div class="command-content">
+
+                <!-- 1. Heading + Description (shown first on mobile) -->
+                <div class="command-intro">
                     <div class="badge">One Screen Total Oversight.</div>
                     <h2 class="section-title">The <span class="gradient-text">Command Center.</span></h2>
                     <p class="section-subtitle">Stop juggling ten different systems. WatchTower brings all your cameras, alerts, and patrol updates onto one intelligent screen.</p>
-                    <div class="command-cta"></div>
+                </div>
+
+                <!-- 2. SVG Animation (shown second on mobile) -->
+                <div class="section-visual command-visual">
+                    <img src="./svg/command-center.svg" alt="Command Center Animation" />
+                </div>
+
+                <!-- 3. Capabilities (shown third on mobile) -->
+                <div class="command-caps">
                     <div class="capability-list">
-                        <div class="capability-item"><div class="cap-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div class="cap-text"><h4>Unified Dashboard</h4><p>Monitor cameras, visitors, vehicles, and patrols seamlessly within a single, intelligent interface.</p></div></div>
-                        <div class="capability-item"><div class="cap-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><div class="cap-text"><h4>Secure Multi-Platform Access</h4><p>Access your security network securely from any desktop workstation or mobile device, anywhere.</p></div></div>
-                        <div class="capability-item"><div class="cap-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="cap-text"><h4>Role-Based Visibility</h4><p>Custom permissions and visibility tiers designed for guards, supervisors, and management.</p></div></div>
-                        <div class="capability-item"><div class="cap-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div class="cap-text"><h4>Real-Time Operational Awareness</h4><p>Maintain constant oversight with live updates and instant alerts across all operational zones.</p></div></div>
+                        <div class="capability-item">
+                            <div class="cap-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                            </div>
+                            <div class="cap-text">
+                                <h4>Unified Dashboard</h4>
+                                <p>Monitor cameras, visitors, vehicles, and patrols seamlessly within a single, intelligent interface.</p>
+                            </div>
+                        </div>
+                        <div class="capability-item">
+                            <div class="cap-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                                    <line x1="12" y1="18" x2="12.01" y2="18"/>
+                                </svg>
+                            </div>
+                            <div class="cap-text">
+                                <h4>Secure Multi-Platform Access</h4>
+                                <p>Access your security network securely from any desktop workstation or mobile device, anywhere.</p>
+                            </div>
+                        </div>
+                        <div class="capability-item">
+                            <div class="cap-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                            </div>
+                            <div class="cap-text">
+                                <h4>Role-Based Visibility</h4>
+                                <p>Custom permissions and visibility tiers designed for guards, supervisors, and management.</p>
+                            </div>
+                        </div>
+                        <div class="capability-item">
+                            <div class="cap-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                                </svg>
+                            </div>
+                            <div class="cap-text">
+                                <h4>Real-Time Operational Awareness</h4>
+                                <p>Maintain constant oversight with live updates and instant alerts across all operational zones.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                            <div class="patrol-visual">
-                <div class="patrol-svg-box">
-                    <img src="svg/command-center.svg" 
-                         alt="Virtual Patrol Animation"
-                         class="patrol-svg">
-                </div>
-            </div>
+
             </div>
         </div>
     </section>
@@ -745,492 +942,265 @@
     <section class="virtual-patrol" id="virtual-patrol">
         <div class="container">
             <div class="patrol-grid">
-            <div class="patrol-visual">
-                <div class="patrol-svg-box">
-                    <img src="svg/virtual-patrol.svg" 
-                         alt="Virtual Patrol Animation"
-                         class="patrol-svg">
-                </div>
-            </div>
-                <div class="patrol-content">
+
+                <!-- 1. Heading + Description (shown first on mobile) -->
+                <div class="patrol-intro">
                     <div class="badge">Autopilot Surveillance</div>
                     <h2 class="section-title">Virtual <span class="gradient-text">Patrol.</span></h2>
                     <h3 class="patrol-subtitle">Why Send Guards On Repetitive Rounds?</h3>
                     <p class="section-subtitle">WatchTower performs patrols using cameras, following your SOPs exactly every time, without shortcuts or fatigue. Guards can run patrols manually, schedule them, or let WatchTower operate in intelligent autopilot mode.</p>
+                </div>
+
+                <!-- 2. SVG Animation (shown second on mobile) -->
+                <div class="section-visual patrol-visual">
+                    <img src="./svg/virtual-patrol.svg" alt="Virtual Patrol Animation" />
+                </div>
+
+                <!-- 3. Capabilities (shown third on mobile) -->
+                <div class="patrol-caps">
                     <div class="capability-list">
-                        <div class="capability-item"><div class="cap-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="cap-text"><h4>Rule-Based Patrols</h4><p>Conducts scheduled, rule-based patrols using cameras covering remote, blind, or restricted areas.</p></div></div>
-                        <div class="capability-item"><div class="cap-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="cap-text"><h4>Extended Reach</h4><p>Seamlessly covers high-risk or difficult areas that are hard for guards to reach physically.</p></div></div>
-                        <div class="capability-item"><div class="cap-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg></div><div class="cap-text"><h4>Intelligent Autopilot</h4><p>Do it yourself, let it run on autopilot, or fully automate your surveillance rounds.</p></div></div>
-                        <div class="capability-item"><div class="cap-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div class="cap-text"><h4>Unwavering Consistency</h4><p>The system follows your exact instructions (SOPs) every single time, without shortcuts.</p></div></div>
-                        <div class="capability-item"><div class="cap-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div class="cap-text"><h4>Verified Reporting</h4><p>Automatic generation of time-stamped patrol logs and comprehensive incident reports.</p></div></div>
+                        <div class="capability-item">
+                            <div class="cap-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                            </div>
+                            <div class="cap-text">
+                                <h4>Rule-Based Patrols</h4>
+                                <p>Conducts scheduled, rule-based patrols using cameras covering remote, blind, or restricted areas.</p>
+                            </div>
+                        </div>
+                        <div class="capability-item">
+                            <div class="cap-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/>
+                                </svg>
+                            </div>
+                            <div class="cap-text">
+                                <h4>Intelligent Autopilot</h4>
+                                <p>Do it yourself, let it run on autopilot, or fully automate your surveillance rounds.</p>
+                            </div>
+                        </div>
+                        <div class="capability-item">
+                            <div class="cap-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+                                </svg>
+                            </div>
+                            <div class="cap-text">
+                                <h4>Verified Reporting</h4>
+                                <p>Automatic generation of time-stamped patrol logs and comprehensive incident reports.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
-<style>
-    /* ===============================
-   VIRTUAL PATROL - WHITE VERSION
-================================= */
 
-
-
-.patrol-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-}
-
-/* LEFT SIDE - SVG */
-.patrol-visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.patrol-svg-box {
-    width: 100%;
-    max-width: 600px;
-    background: #000000; /* Light card background */
-    padding: 30px;
-    border-radius: 28px;
-    box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.08);
-}
-
-.patrol-svg {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-
-
-/* Responsive */
-@media (max-width: 992px) {
-    .patrol-grid {
-        grid-template-columns: 1fr;
-        gap: 50px;
-    }
-
-    .patrol-visual {
-        order: 2;
-    }
-
-    .patrol-content {
-        order: 1;
-    }
-}
-</style>
     <!-- SMART SURVEILLANCE -->
     <section class="smart-surveillance" id="smart-surveillance">
         <div class="container">
             <div class="surveillance-grid">
-                <div class="surveillance-content">
+
+                <!-- 1. Heading + Description (shown first on mobile) -->
+                <div class="surveillance-intro">
                     <div class="badge">AI-Powered Intelligence</div>
                     <h2 class="section-title">Smart <span class="gradient-text">Surveillance.</span></h2>
                     <h3 class="surveillance-subtitle">Detect Problems Before They Happen.</h3>
                     <p class="section-subtitle">Most cameras just record. WatchTower understands what it sees. The system ignores swaying trees or stray cats but alerts you instantly if a person or car is where they shouldn't be.</p>
+                </div>
+
+                <!-- 2. SVG Animation (shown second on mobile) -->
+                <div class="section-visual surveillance-visual">
+                    <img src="./svg/surverillance.svg" alt="Smart Surveillance Animation" />
+                </div>
+
+                <!-- 3. Capabilities (shown third on mobile) -->
+                <div class="surveillance-caps">
                     <div class="capability-list">
-                        <div class="capability-item"><div class="cap-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div><div class="cap-text"><h4>Smart Detection</h4><p>Instantly spots people, vehicles, and suspicious behavior while filtering out environmental noise.</p></div></div>
-                        <div class="capability-item"><div class="cap-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div><div class="cap-text"><h4>Real Alerts</h4><p>Get notified for things that matter—like tailgating or someone entering after hours.</p></div></div>
-                        <div class="capability-item"><div class="cap-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div class="cap-text"><h4>Instant Video Search</h4><p>Stop scrubbing through hours of footage. Search by time, location, or event type instantly.</p></div></div>
-                    </div>
-                </div>
-                <div class="surveillance-visual">
-                    <div class="ai-monitor">
-                        <div class="grid-overlay"></div><div class="scan-line"></div>
-                        <div class="detection-container vehicle-alert">
-                            <svg class="car-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5H6.5C5.84 5 5.28 5.42 5.08 6.01L3 12V20C3 20.55 3.45 21 4 21H5C5.55 21 6 20.55 6 20V19H18V20C18 20.55 18.45 21 19 21H20C20.55 21 21 20.55 21 20V12L18.92 6.01ZM6.85 7H17.15L18.22 10.11H5.78L6.85 7ZM19 17H5V12H19V17ZM7.5 16C8.33 16 9 15.33 9 14.5C9 13.67 8.33 13 7.5 13C6.67 13 6 13.67 6 14.5C6 15.33 6.67 16 7.5 16ZM16.5 16C17.33 16 18 15.33 18 14.5C18 13.67 17.33 13 16.5 13C15.67 13 15 13.67 15 14.5C15 15.33 15.67 16 16.5 16Z" fill="currentColor"/></svg>
-                            <div class="bounding-box"></div>
-                            <div class="detection-label">ANOMALY: UNAUTHORIZED VEHICLE</div>
-                            <div class="radar-ring"></div>
+                        <div class="capability-item">
+                            <div class="cap-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                                </svg>
+                            </div>
+                            <div class="cap-text">
+                                <h4>Smart Detection</h4>
+                                <p>Instantly spots people, vehicles, and suspicious behavior while filtering out environmental noise.</p>
+                            </div>
                         </div>
-                        <div class="search-overlay"><div class="search-bar">"Smart Surveillance"</div></div>
+                        <div class="capability-item">
+                            <div class="cap-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                                </svg>
+                            </div>
+                            <div class="cap-text">
+                                <h4>Real Alerts</h4>
+                                <p>Get notified for things that matter—like tailgating or someone entering after hours.</p>
+                            </div>
+                        </div>
+                        <div class="capability-item">
+                            <div class="cap-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                                </svg>
+                            </div>
+                            <div class="cap-text">
+                                <h4>Instant Video Search</h4>
+                                <p>Stop scrubbing through hours of footage. Search by time, location, or event type instantly.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
     <!-- ACCESS MANAGEMENT -->
-    <section class="smart-surveillance" id="access-management">
+    <section id="access-management">
         <div class="container">
             <div class="ac-grid">
-                <div class="ac-visual-wrapper">
-                    <div class="ac-monitor-frame">
-                        <div class="ac-beam-line"></div>
-                        <div class="ac-ui-header"><div class="ac-live-box"><span class="ac-status-dot"></span><span class="ac-status-label">TERMINAL ACTIVE</span></div><span class="ac-timer">JAN 27, 2026 | 10:51:54 AM</span></div>
-                        <div class="ac-scan-viewport">
-                            <div class="ac-target-box"><div class="ac-corner-brackets"></div><div class="ac-reticle-bar"></div><svg class="ac-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
-                        </div>
-                        <div class="ac-log-stack">
-                            <div class="ac-entry"><div><span class="ac-meta-label">ID VERIFIED</span><span class="ac-meta-val">FACIAL RECOGNITION</span></div><div class="ac-tag-approved">GRANTED</div></div>
-                            <div class="ac-entry"><div><span class="ac-meta-label">LPR SCAN</span><span class="ac-meta-val">PLATE: AD12 34</span></div><div class="ac-tag-approved">GRANTED</div></div>
-                        </div>
-                        <div class="ac-footer-info">VisitorPass & GatePass Synced...</div>
-                    </div>
-                </div>
-                <div class="surveillance-content">
+
+                <!-- 1. Heading + Description (shown first on mobile) -->
+                <div class="ac-intro">
                     <div class="badge">Access Management</div>
                     <h2 class="section-title">Smart <span class="gradient-text">Access Control.</span></h2>
                     <h3 class="surveillance-subtitle">Know Who Enters and Exits.</h3>
                     <p class="section-subtitle">WatchTower integrates facial recognition and LPR scanning to manage visitor and vehicle access seamlessly. Every entry and exit is logged with timestamps and identity verification.</p>
+                </div>
+
+                <!-- 2. SVG Animation (shown second on mobile) -->
+                <div class="section-visual ac-visual-wrapper">
+                    <img src="./svg/accesscontrol.svg" alt="Access Control Animation" />
+                </div>
+
+                <!-- 3. Capabilities (shown third on mobile) -->
+                <div class="ac-caps">
                     <div class="capability-list">
-                        <div class="capability-item"><div class="cap-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div><div class="cap-text"><h4>Facial Recognition</h4><p>Instantly identifies and verifies individuals while filtering unauthorized access attempts.</p></div></div>
-                        <div class="capability-item"><div class="cap-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg></div><div class="cap-text"><h4>Vehicle LPR Integration</h4><p>Automatic license plate recognition grants or denies vehicle access with zero manual intervention.</p></div></div>
-                        <div class="capability-item"><div class="cap-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div class="cap-text"><h4>VisitorPass & GatePass Sync</h4><p>Connected apps for digital visitor registration and vehicle parking management, fully integrated.</p></div></div>
+                        <div class="capability-item">
+                            <div class="cap-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                                </svg>
+                            </div>
+                            <div class="cap-text">
+                                <h4>Facial Recognition</h4>
+                                <p>Instantly identifies and verifies individuals while filtering unauthorized access attempts.</p>
+                            </div>
+                        </div>
+                        <div class="capability-item">
+                            <div class="cap-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                                </svg>
+                            </div>
+                            <div class="cap-text">
+                                <h4>Vehicle LPR Integration</h4>
+                                <p>Automatic license plate recognition grants or denies vehicle access with zero manual intervention.</p>
+                            </div>
+                        </div>
+                        <div class="capability-item">
+                            <div class="cap-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                                </svg>
+                            </div>
+                            <div class="cap-text">
+                                <h4>VisitorPass & GatePass Sync</h4>
+                                <p>Connected apps for digital visitor registration and vehicle parking management, fully integrated.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-
-
-<style>
-    /* =========================================
-   DARK MODE FIX FOR FEATURED PRICING CARD
-========================================= */
-
-/* Ensure featured card adapts properly */
-.featured {
-    background: var(--card-bg);
-}
-
-/* Fix text colors inside featured card */
-[data-theme="dark"] .featured .plan-label,
-[data-theme="dark"] .featured .plan-price,
-[data-theme="dark"] .featured .plan-desc,
-[data-theme="dark"] .featured .plan-features,
-[data-theme="dark"] .featured .plan-features li {
-    color: var(--text-dark);
-}
-
-/* If your dark theme makes text-dark too dim, use this instead */
-[data-theme="dark"] .featured .plan-label,
-[data-theme="dark"] .featured .plan-price {
-    color: #ffffff;
-}
-
-/* Fix primary button in dark mode */
-[data-theme="dark"] .featured .plan-btn.primary {
-    background: var(--accent);
-    color: #ffffff;
-}
-    /* ================================
-   PRICING SECTION (THEME MATCHED)
-================================ */
-
-.pricing-section {
-    padding: 120px 0;
-    background: var(--pricing-bg);
-    transition: background 0.4s ease;
-}
-
-.center {
-    text-align: center;
-}
-
-/* HEADER */
-
-
-.pricing-section .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-    color: var(--text-dark);
-}
-
-.pricing-section .section-title span {
-    color: var(--accent);
-}
-
-.pricing-section .section-subtitle {
-    max-width: 650px;
-    margin: auto;
-    color: var(--text-dim);
-    line-height: 1.7;
-}
-
-/* GRID */
-
-.pricing-grid {
-    margin-top: 80px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-}
-
-/* CARD */
-
-.pricing-card {
-    background: var(--card-bg);
-    border-radius: 24px;
-    padding: 50px 40px;
-    border: 1px solid var(--card-border);
-    position: relative;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-}
-
-.pricing-card:hover {
-    transform: translateY(-10px);
-    border-color: rgba(217, 119, 6, 0.3);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-}
-
-/* FEATURED */
-
-.featured {
-    border: 1px solid rgba(217, 119, 6, 0.4);
-    box-shadow: 0 20px 60px rgba(217, 119, 6, 0.1);
-}
-
-.popular-badge {
-    position: absolute;
-    top: -14px;
-    right: 30px;
-    background: var(--accent);
-    color: #fff;
-    padding: 6px 14px;
-    font-size: 0.7rem;
-    border-radius: 20px;
-    font-weight: 600;
-}
-
-/* TEXT */
-
-.plan-label {
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 20px;
-}
-
-.plan-price {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: var(--text-dark);
-}
-
-.plan-price span {
-    font-size: 1rem;
-    color: var(--text-dim);
-    font-weight: 400;
-}
-
-.plan-desc {
-    font-size: 0.95rem;
-    margin-bottom: 30px;
-    color: var(--text-dim);
-}
-
-/* FEATURES */
-
-.plan-features {
-    list-style: none;
-    margin-bottom: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    font-size: 0.95rem;
-    color: var(--text-mid);
-}
-
-.plan-features li {
-    padding-left: 20px;
-    position: relative;
-}
-
-.plan-features li::before {
-    content: "→";
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-}
-
-/* BUTTON */
-
-.plan-btn {
-    width: 100%;
-    padding: 14px;
-    border-radius: 50px;
-    border: 1px solid var(--card-border);
-    background: transparent;
-    color: var(--text-dark);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.95rem;
-    font-weight: 600;
-}
-
-.plan-btn:hover {
-    background: rgba(0,0,0,0.04);
-    border-color: var(--accent);
-}
-
-[data-theme="dark"] .plan-btn:hover {
-    background: rgba(255,255,255,0.06);
-}
-
-/* PRIMARY BUTTON */
-
-.plan-btn.primary {
-    background: var(--text-dark);
-    color: #fff;
-    border: none;
-}
-
-.plan-btn.primary:hover {
-    background: var(--accent);
-}
-
-/* NOTE */
-
-.pricing-note {
-    margin-top: 60px;
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--text-dim);
-    line-height: 1.7;
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 992px) {
-    .pricing-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .pricing-section .section-title {
-        font-size: 2rem;
-    }
-}
-</style>
-<!-- PRICING SECTION -->
-<section class="pricing-section" id="pricing">
-    <div class="container">
-
-        <!-- HEADER -->
-        <div class="section-header center">
-            <div class="badge">Pricing</div>
-            <h2 class="section-title">
-                Scale Only When <span>You Need To</span>
-            </h2>
-            <p class="section-subtitle">
-                WatchTower runs on your existing infrastructure with no upfront investment.
-                Upgrade only when your operations grow.
-            </p>
+    <!-- PRICING -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="section-header center">
+                <div class="badge">Pricing</div>
+                <h2 class="section-title">Scale Only When <span class="gradient-text">You Need To</span></h2>
+                <p class="section-subtitle">WatchTower runs on your existing infrastructure with no upfront investment. Upgrade only when your operations grow.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="plan-label">Starter</div>
+                    <div class="plan-price"><span>From</span> $0 <span>/ month</span></div>
+                    <p class="plan-desc">Best for single-site and basic use</p>
+                    <ul class="plan-features">
+                        <li>Single user access</li>
+                        <li>Supports up to 8 cameras</li>
+                        <li>Command Center dashboard</li>
+                        <li>Unlimited manual Virtual Patrols</li>
+                        <li>Patrol reports via email</li>
+                        <li>Runs locally on your existing PC or laptop</li>
+                    </ul>
+                    <a href="https://wa.me/6580585077?text=Hello%20WatchTower%20Team,%20I%20would%20like%20to%20enquire%20about%20your%20services." target="_blank">
+    <button class="plan-btn primary">Get Started</button>
+</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="popular-badge">Most Popular</div>
+                    <div class="plan-label">Intelligence</div>
+                    <div class="plan-price"><span>From</span> $99 <span>/ month</span></div>
+                    <p class="plan-desc">Everything in Free Tier, plus:</p>
+                    <ul class="plan-features">
+                        <li>Multi-user access for guards, supervisors, and managers</li>
+                        <li>Support for larger camera deployments</li>
+                        <li>AI-powered automated Virtual Patrols</li>
+                        <li>Real-time alerts & mobile app notifications</li>
+                        <li>SLA-based support</li>
+                        <li>Free VisitorPass (digital visitor registration & management)</li>
+                    </ul>
+                                        <a href="https://wa.me/6580585077?text=Hello%20WatchTower%20Team,%20I%20would%20like%20to%20enquire%20about%20your%20services." target="_blank">
+    <button class="plan-btn primary">Contact Sales</button>
+</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="plan-label">Enterprise Add-ons</div>
+                    <div class="plan-price">Custom<span> Pricing</span></div>
+                    <p class="plan-desc">For large campuses, enterprises, and smart cities.</p>
+                    <ul class="plan-features">
+                        <li>Multi-site deployments</li>
+                        <li>Advanced AI automation and workflows</li>
+                        <li>Real-time video analytics and intelligent tracking</li>
+                        <li>Fast video search and live monitoring</li>
+                        <li>Dedicated edge or cloud deployments</li>
+                    </ul>
+                                        <a href="https://wa.me/6580585077?text=Hello%20WatchTower%20Team,%20I%20would%20like%20to%20enquire%20about%20your%20services." target="_blank">
+    <button class="plan-btn primary">Contact Sales</button>
+</a>
+                </div>
+            </div>
+            <p class="pricing-note">No hardware changes required. Works with your existing CCTV infrastructure.</p>
         </div>
+    </section>
 
-        <!-- PRICING GRID -->
-        <div class="pricing-grid">
-
-            <!-- BASIC PLAN -->
-            <div class="pricing-card">
-                <div class="plan-label">Starter</div>
-                <div class="plan-price">
-                    $0 <span>/ month</span>
+    <!-- ENTERPRISE -->
+    <section class="enterprise-section">
+        <div class="container">
+            <div class="enterprise-grid">
+                <div class="enterprise-content">
+                    <div class="badge">Why WatchTower Is Easy To Start</div>
+                    <h2 class="section-title">Deploy Fast. <span class="gradient-text">Scale Smart.</span></h2>
+                    <ul class="enterprise-list">
+                        <li>No compulsory hardware purchase</li>
+                        <li>Deploy locally, on dedicated edge, or on cloud</li>
+                        <li>Reuse existing cameras, PCs, or on-site servers</li>
+                        <li>Flexible configurations based on site size, camera count, and use cases</li>
+                        <li>Priority updates and enterprise support</li>
+                    </ul>
                 </div>
-                <p class="plan-desc">
-                    Best for single-site and basic use
-                </p>
-
-                <ul class="plan-features">
-                    <li>Single user access</li>
-                    <li>Supports up to 8 cameras</li>
-                    <li>Command Center dashboard</li>
-                    <li>Unlimited manual Virtual Patrols </li>
-                    <li>Patrol reports via email</li>
-                    <li>Runs locally on your existing PC or laptop</li>
-                </ul>
-
-                <button class="plan-btn">
-                    Get Started
-                </button>
-            </div>
-
-            <!-- FEATURED PLAN -->
-            <div class="pricing-card featured">
-                <div class="popular-badge">Most Popular</div>
-
-                <div class="plan-label">Professional</div>
-                <div class="plan-price">
-                    $99 <span>/ month</span>
-                </div>
-                <p class="plan-desc">
-                    Everything in Free Tier, plus:
-                </p>
-
-                <ul class="plan-features">
-                    <li>Multi-user access for guards, supervisors, and managers</li>
-                    <li>Support for larger camera deployments</li>
-                    <li>AI-powered automated Virtual Patrols</li>
-                    <li>Real-time alerts & mobile app notifications</li>
-                    <li>SLA-based support</li>
-                    <li>Free VisitorPass (Connected app for digital visitor registration & management)</li>
-                </ul>
-
-                <button class="plan-btn primary">
-                    Upgrade Now
-                </button>
-            </div>
-
-            <!-- ENTERPRISE PLAN -->
-            <div class="pricing-card">
-                <div class="plan-label">Enterprise</div>
-                <div class="plan-price">
-                    Custom <span>pricing</span>
-                </div>
-                <p class="plan-desc">
-                    For large campuses, enterprises, and smart cities.
-                </p>
-
-                <ul class="plan-features">
-                    <li>Multi-site deployments</li>
-                    <li>Advanced AI automation and workflows</li>
-                    <li>Real-time video analytics and intelligent tracking</li>
-                    <li>Fast video search and live monitoring</li>
-                    <li>Dedicated edge or cloud deployments</li>
-                </ul>
-
-                <button class="plan-btn">
-                    Contact Sales
-                </button>
-            </div>
-
-        </div>
-
-        <!-- NOTE -->
-        <p class="pricing-note">
-            No hardware changes required. Works with your existing CCTV infrastructure.
-        </p>
-
-    </div>
-</section>
-
-<!-- ENTERPRISE -->
-<section class="enterprise-section">
-    <div class="container">
-        <div class="enterprise-grid">
-            <div class="enterprise-content">
-                <div class="badge">Why WatchTower Is Easy To Start</div>
-                <h2 class="section-title">Deploy Fast. Scale Smart.</h2>
-                <ul class="enterprise-list">
-                    <li>No compulsory hardware purchase</li>
-                    <li>Deploy locally, on dedicated edge, or on cloud</li>
-                    <li>Reuse existing cameras, PCs, or on-site servers</li>
-                    <li>Flexible configurations based on site size, camera count, and use cases</li>
-                    <li>Priority updates and enterprise support</li>
-                </ul>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- FOOTER -->
     <footer class="footer">
@@ -1246,82 +1216,55 @@
                     <li onclick="document.getElementById('virtual-patrol').scrollIntoView({behavior:'smooth'})">Virtual Patrol</li>
                     <li onclick="document.getElementById('smart-surveillance').scrollIntoView({behavior:'smooth'})">Smart Surveillance</li>
                     <li onclick="document.getElementById('access-management').scrollIntoView({behavior:'smooth'})">Access Control</li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Product</h3>
-                <ul>
                     <li onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Pricing</li>
-                    <li>Enterprise Add-Ons</li><li>VisitorPass</li><li>GatePass</li>
                 </ul>
             </div>
-            <div class="footer-column">
-                <h3>Contact</h3>
-                <p>Email: support@watchtower.com</p>
-                <p>Sales: sales@watchtower.com</p>
-                <p><strong style="color:white;">24/7 Enterprise Support</strong></p>
-            </div>
-        </div>
 
-        <!-- THEME TOGGLE BAR -->
-        <div class="footer-theme-bar">
-            <span class="theme-label" id="label-light">☀ Light</span>
-            <button class="theme-toggle-pill" id="themeToggle" aria-label="Toggle dark mode" title="Toggle light/dark mode">
-                <div class="toggle-knob">
-                    <!-- Sun icon (light mode) -->
-                    <svg class="icon-sun" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-                    </svg>
-                    <!-- Moon icon (dark mode) -->
-                    <svg class="icon-moon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                    </svg>
-                </div>
-            </button>
-            <span class="theme-label" id="label-dark">🌙 Dark</span>
+<div class="footer-column">
+    <h3>Contact</h3>
+    <p>Email: <a href="mailto:hello@watchtower.sg" style="color: #fbbf24; text-decoration: none;">hello@watchtower.sg</a></p>
+    <p>Monitor: <a href="mailto:monitor@watchtower.sg" style="color: #fbbf24; text-decoration: none;">monitor@watchtower.sg</a></p>
+    <p><strong style="color:white;">24/7 Enterprise Support</strong></p>
+</div>
         </div>
 
         <div class="footer-bottom">© 2025 WatchTower. All rights reserved.</div>
     </footer>
 
     <script>
-        // --- THEME TOGGLE ---
-        const themeToggle = document.getElementById('themeToggle');
+        // THEME
         const html = document.documentElement;
         const labelLight = document.getElementById('label-light');
         const labelDark = document.getElementById('label-dark');
 
-        // Load saved preference (default: light)
-        const savedTheme = localStorage.getItem('watchtower-theme') || 'light';
-        html.setAttribute('data-theme', savedTheme);
-        updateLabels(savedTheme);
-
-        themeToggle.addEventListener('click', () => {
-            const current = html.getAttribute('data-theme');
-            const next = current === 'light' ? 'dark' : 'light';
-            html.setAttribute('data-theme', next);
-            localStorage.setItem('watchtower-theme', next);
-            updateLabels(next);
-        });
-
-        function updateLabels(theme) {
+        function setTheme(theme) {
+            html.setAttribute('data-theme', theme);
+            try { localStorage.setItem('watchtower-theme', theme); } catch(e) {}
             if (theme === 'dark') {
-                labelLight.classList.remove('active-label');
-                labelDark.classList.add('active-label');
+                labelLight?.classList.remove('active-label');
+                labelDark?.classList.add('active-label');
             } else {
-                labelLight.classList.add('active-label');
-                labelDark.classList.remove('active-label');
+                labelLight?.classList.add('active-label');
+                labelDark?.classList.remove('active-label');
             }
         }
+        function toggleTheme() { setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'); }
 
-        // --- HAMBURGER MENU ---
+        let savedTheme = 'light';
+        try { savedTheme = localStorage.getItem('watchtower-theme') || 'light'; } catch(e) {}
+        setTheme(savedTheme);
+
+        document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
+        document.getElementById('navThemeToggle')?.addEventListener('click', toggleTheme);
+
+        // HAMBURGER
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
         hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navMenu.classList.toggle('active'); });
-        document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('active'); navMenu.classList.remove('active'); }); });
+        document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => { hamburger.classList.remove('active'); navMenu.classList.remove('active'); }));
         window.addEventListener('scroll', () => { if (navMenu.classList.contains('active')) { hamburger.classList.remove('active'); navMenu.classList.remove('active'); } });
 
-        // --- PRODUCTS DROPDOWN ---
+        // DROPDOWN
         const productsDropdown = document.getElementById('productsDropdown');
         const productsBtn = document.getElementById('productsBtn');
         const dropdownPanel = document.getElementById('dropdownPanel');
@@ -1334,19 +1277,33 @@
                 productsDropdown.classList.remove('open');
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
-                if (href && href.startsWith('#')) { const target = document.querySelector(href); if (target) { setTimeout(() => { target.scrollIntoView({ behavior: 'smooth' }); }, 50); } }
+                if (href?.startsWith('#')) {
+                    const target = document.querySelector(href);
+                    if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 50);
+                }
             });
         });
-        dropdownPanel.querySelector('.df-link').addEventListener('click', (e) => { e.preventDefault(); productsDropdown.classList.remove('open'); document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' }); });
+        dropdownPanel.querySelector('.df-link')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            productsDropdown.classList.remove('open');
+            document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+        });
 
-        // --- NAVBAR HIDE/SHOW ---
+        // NAV HIDE/SHOW
         let lastScrollY = window.scrollY;
         const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => { productsDropdown.classList.remove('open'); if (window.scrollY > lastScrollY && window.scrollY > 100) { navbar.classList.add('nav-hidden'); } else { navbar.classList.remove('nav-hidden'); } lastScrollY = window.scrollY; });
+        window.addEventListener('scroll', () => {
+            productsDropdown.classList.remove('open');
+            navbar.classList.toggle('nav-hidden', window.scrollY > lastScrollY && window.scrollY > 100);
+            lastScrollY = window.scrollY;
+        });
 
-        // --- SCROLL REVEAL ---
-        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        // SCROLL REVEAL
+        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
         document.querySelectorAll('.feature-card').forEach(card => observer.observe(card));
+
+        // HERO PLAY
+        document.getElementById('heroPlay')?.addEventListener('click', () => { document.getElementById('command-center').scrollIntoView({ behavior: 'smooth' }); });
     </script>
 </body>
 </html>
